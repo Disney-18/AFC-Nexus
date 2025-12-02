@@ -1,0 +1,21 @@
+{
+  "lastUpdate": "2025-12-03",
+  "articles": [
+    {
+      "id": 1,
+      "title": "Ejemplo: Nueva vulnerabilidad crítica descubierta",
+      "content": "Investigadores de seguridad han identificado una falla grave en un software ampliamente usado...",
+      "category": "Vulnerabilidades",
+      "date": "2025-12-03",
+      "source": "Fuente Ejemplo"
+    },
+    {
+      "id": 2,
+      "title": "Ejemplo: Aumentan los ataques de phishing a bancos",
+      "content": "Una nueva campaña de correos electrónicos maliciosos está engañando a usuarios para robar credenciales...",
+      "category": "Phishing",
+      "date": "2025-12-02",
+      "source": "Fuente Ejemplo"
+    }
+  ]
+}
