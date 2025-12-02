@@ -1,55 +1,51 @@
 {
-  "lastUpdate": "2024-03-15T10:30:00",
   "articles": [
     {
       "id": 1,
-      "title": "Nuevo ataque de ransomware paraliza hospitales europeos",
-      "content": "Un grupo de hackers identificado como 'ShadowMed' está utilizando una vulnerabilidad en sistemas de gestión hospitalaria para cifrar datos críticos y exigir rescates en criptomonedas. Las autoridades recomiendan actualizar inmediatamente los sistemas.",
+      "title": "Nuevo ransomware ataca infraestructuras críticas en Europa",
+      "content": "Un grupo de hackers identificado como 'ShadowHive' está utilizando vulnerabilidades en software de gestión industrial para cifrar sistemas hospitalarios y energéticos. Las autoridades recomiendan actualizar inmediatamente todos los sistemas y aplicar los parches de seguridad más recientes. Se reportan al menos 12 hospitales afectados en Alemania y Francia.",
       "category": "Ransomware",
+      "source": "CERT-EU",
       "date": "2024-03-15",
       "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&h=300&fit=crop",
-      "source": "The Hacker News",
-      "url": "https://thehackernews.com/ejemplo-noticia"
+      "url": "https://thehackernews.com/2024/03/nuevo-ransomware-europa.html"
     },
     {
       "id": 2,
-      "title": "Vulnerabilidad crítica en Android permite acceso remoto",
-      "content": "Google ha emitido un parche de emergencia para una vulnerabilidad en el sistema de permisos que permitía a aplicaciones maliciosas obtener acceso completo al dispositivo sin intervención del usuario.",
+      "title": "Vulnerabilidad crítica en Apache Log4j sigue siendo explotada",
+      "content": "A pesar de los parches publicados hace meses, miles de servidores siguen vulnerables a CVE-2021-44228. Nuevas variantes están apareciendo y siendo explotadas activamente por grupos de hacking. Los expertos recomiendan actualizar inmediatamente a Log4j versión 2.17.1 o superior.",
       "category": "Vulnerabilidades",
+      "source": "MITRE",
       "date": "2024-03-14",
       "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=300&fit=crop",
-      "source": "CISA Alerts",
-      "url": "https://www.cisa.gov/ejemplo"
+      "url": "https://www.cisa.gov/news-events/alerts/2024/03/14/log4j-update"
     },
     {
       "id": 3,
       "title": "Aumento del 250% en ataques de phishing bancario",
-      "content": "Una nueva campaña utiliza correos falsos que suplantan entidades bancarias mexicanas con archivos PDF maliciosos que instalan troyanos. Ya se han reportado cientos de casos.",
+      "content": "Una nueva campaña utiliza correos falsos que suplantan entidades bancarias mexicanas con archivos PDF maliciosos que instalan troyanos. Ya se han reportado cientos de casos con pérdidas económicas significativas. La Interpol ha emitido una alerta global.",
       "category": "Phishing",
-      "date": "2024-03-13",
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop",
       "source": "Interpol Cybercrime",
-      "url": "https://www.interpol.int/ejemplo"
+      "date": "2024-03-13",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop"
     },
     {
       "id": 4,
       "title": "Nuevas regulaciones GDPR para protección de datos 2024",
-      "content": "La Unión Europea ha actualizado las regulaciones GDPR con requisitos más estrictos para el manejo de datos personales, especialmente en aplicaciones móviles y servicios en la nube.",
+      "content": "La Unión Europea ha actualizado las regulaciones GDPR con requisitos más estrictos para el manejo de datos personales, especialmente en aplicaciones móviles y servicios en la nube. Las multas por incumplimiento pueden llegar hasta el 4% de los ingresos globales.",
       "category": "Regulaciones",
+      "source": "EU Cybersecurity Agency",
       "date": "2024-03-12",
-      "image": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=300&fit=crop",
-      "source": "EU Cybersecurity",
-      "url": "https://europa.eu/ejemplo"
+      "image": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=300&fit=crop"
     },
     {
       "id": 5,
       "title": "Guía completa para proteger servidores Docker",
-      "content": "Expertos en seguridad comparten las mejores prácticas para asegurar contenedores Docker en entornos de producción, incluyendo configuración de redes, gestión de secretos y escaneo de imágenes.",
+      "content": "Expertos en seguridad comparten las mejores prácticas para asegurar contenedores Docker en entornos de producción. Incluye configuración de redes seguras, gestión de secretos, escaneo de imágenes y monitoreo continuo. El artículo incluye ejemplos de código y comandos.",
       "category": "Tutoriales",
-      "date": "2024-03-11",
-      "image": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&h=300&fit=crop",
       "source": "OWASP",
-      "url": "https://owasp.org/ejemplo"
+      "date": "2024-03-11",
+      "image": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&h=300&fit=crop"
     }
   ]
 }
