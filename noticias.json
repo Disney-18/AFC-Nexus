@@ -14,8 +14,8 @@
         "Este caso subraya un desafío más amplio en el ecosistema de IA: la seguridad a menudo va a la zaga de la innovación. A medida que frameworks como PyTorch se adoptan masivamente, las herramientas de protección deben ser igualmente robustas y estar sujetas a un escrutinio de seguridad continuo."
       ],
       "category": "Vulnerabilidades / IA",
-      "source": "The Hacker News / JFrog",
-      "date": "2025-12-03",
+      "source": "The Hacker News",
+      "date": "2025-12-04",
       "image": "https://thehackernews.com/images/-_DSNuqJtPWo/Y57W7X5NfFI/AAAAAAAAGlw/6ojmF-9tB54DgnmkLeQjzPF_IoWeH3PFQCLcBGAsYHQ/s0/ai-cybersecurity-threats.jpg",
       "url": "https://thehackernews.com/2025/12/picklescan-bugs-allow-malicious-pytorch.html"
     },
@@ -31,7 +31,7 @@
         "La recomendación para las organizaciones es clara: no confiar únicamente en las defensas on-premise. Una estrategia de seguridad que incluya una red de entrega de contenido (CDN) con capacidades de mitigación de DDoS integradas y a escala de nube es esencial para resistir estas amenazas modernas."
       ],
       "category": "DDoS / Botnets",
-      "source": "The Hacker News / Cloudflare",
+      "source": "The Hacker News",
       "date": "2025-12-03",
       "image": "https://thehackernews.com/images/-OcG_dU5og8o/Y57W7SJQRzI/AAAAAAAAGls/9wyDpWagWpY9N_EIMw8H5kF3hF-Mj0sWwCLcBGAsYHQ/s0/cloudflare-ddos.jpg",
       "url": "https://thehackernews.com/2025/12/record-297-tbps-ddos-attack-linked-to.html"
@@ -50,7 +50,7 @@
       ],
       "category": "WordPress / Vulnerabilidades",
       "source": "The Hacker News",
-      "date": "2025-12-02",
+      "date": "2025-12-03",
       "image": "https://thehackernews.com/images/-q7gs0KAp2lE/Y57W7M-SHXI/AAAAAAAAGlo/cdZRWK0V_pEL6Fm3j3lGytiy1oQPVsX8gCLcBGAsYHQ/s0/wordpress-hack.jpg",
       "url": "https://thehackernews.com/2025/12/wordpress-king-addons-flaw-under-active.html"
     },
@@ -67,7 +67,7 @@
       ],
       "category": "Windows / Vulnerabilidades",
       "source": "The Hacker News",
-      "date": "2025-12-01",
+      "date": "2025-12-03",
       "image": "https://thehackernews.com/images/-zVhQaOOAc4A/Y57W7HkjLtI/AAAAAAAAGlk/um2aZfVh1f4Cl0igMc02sXHZ2Z81bwFxgCLcBGAsYHQ/s0/windows-update.jpg",
       "url": "https://thehackernews.com/2025/12/microsoft-silently-patches-windows-lnk.html"
     },
@@ -85,7 +85,7 @@
       ],
       "category": "Malware / Troyanos",
       "source": "The Hacker News",
-      "date": "2025-11-29",
+      "date": "2025-12-02",
       "image": "https://thehackernews.com/images/-0DVG8FAn-ig/Y57W7A1K7hI/AAAAAAAAGlg/5pDQCrgkfg4blhtu5PBNFSqXQq-wtQe4gCLcBGAsYHQ/s0/brazil-banking-trojan.jpg",
       "url": "https://thehackernews.com/2025/12/brazil-hit-by-banking-trojan-spread-via.html"
     },
@@ -103,7 +103,7 @@
       ],
       "category": "IA / Ciberamenazas",
       "source": "The Hacker News",
-      "date": "2025-11-28",
+      "date": "2025-12-02",
       "image": "https://thehackernews.com/images/-_DSNuqJtPWo/Y57W7X5NfFI/AAAAAAAAGlw/6ojmF-9tB54DgnmkLeQjzPF_IoWeH3PFQCLcBGAsYHQ/s0/ai-cybersecurity-threats.jpg",
       "url": "https://thehackernews.com/2025/12/discover-ai-tools-fueling-next.html"
     },
@@ -121,7 +121,7 @@
       ],
       "category": "IA / Tecnología",
       "source": "The Hacker News",
-      "date": "2025-11-27",
+      "date": "2025-12-02",
       "image": "https://thehackernews.com/images/-1S6wnMrl7w8/Y57W64V1ngI/AAAAAAAAGlc/Er8Y1yT-Q_caRTs1YHwPsOS1_6EnwOhXwCLcBGAsYHQ/s0/ai-efficiency.jpg",
       "url": "https://thehackernews.com/2025/12/chopping-ai-down-to-size-turning.html"
     },
@@ -139,7 +139,7 @@
       ],
       "category": "Cloud / Estrategia",
       "source": "The Hacker News",
-      "date": "2025-11-26",
+      "date": "2025-12-02",
       "image": "https://thehackernews.com/images/-VA9o1onbY2A/Y57W6lJtaKI/AAAAAAAAGlY/FewuEr3v6s8W7V5bpvDpWb04fkwz7VAGACLcBGAsYHQ/s0/cloud-security.jpg",
       "url": "https://thehackernews.com/expert-insights/2025/12/beyond-point-in-time-roi-case-for.html"
     },
@@ -157,7 +157,7 @@
       ],
       "category": "Web / Vulnerabilidades",
       "source": "The Hacker News",
-      "date": "2025-11-26",
+      "date": "2025-12-01",
       "image": "https://thehackernews.com/images/-bBm8lFZIPVA/Y57W6ZOJkpI/AAAAAAAAGlU/6Bc9svlnmFYWt5Xh_ghTP40GbhifVK8TgCLcBGAsYHQ/s0/react-nextjs-bug.jpg",
       "url": "https://thehackernews.com/2025/12/critical-rsc-bugs-in-react-and-nextjs.html"
     },
@@ -179,7 +179,7 @@
       ],
       "category": "Malware",
       "source": "The Hacker News",
-      "date": "2025-11-25",
+      "date": "2025-12-01",
       "image": "https://8upload.com/image/d42511bdf8da6870/IMG_20251203_041541_676.jpg",
       "url": "https://thehackernews.com"
     }
