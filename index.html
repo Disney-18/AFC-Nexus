@@ -741,707 +741,6 @@
         .theme-option {
             flex: 1;
             min-width: 120px;
-          ;
-        }
-
-        .card-header {
-            margin-bottom: 12px;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            line-height: 1.4;
-            margin-bottom: 8px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .card-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .card-excerpt {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 16px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 16px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .read-btn {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: var(--radius-full);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-normal);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .read-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* ===== PANTALLA DE LECTURA COMPLETA ===== */
-        .article-fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--bg-primary);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 20px;
-            display: none;
-            opacity: 0;
-            transition: opacity var(--transition-normal);
-        }
-
-        .article-fullscreen.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .article-header {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            padding-top: 60px;
-        }
-
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--bg-secondary);
-            border: none;
-            color: var(--text-primary);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2001;
-            box-shadow: var(--shadow-md);
-        }
-
-        .article-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .article-meta {
-            display: flex;
-            gap: 20px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .article-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: var(--radius-lg);
-            margin: 30px 0;
-        }
-
-        .article-body {
-            max-width: 800px;
-            margin: 0 auto 60px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .article-body p {
-            margin-bottom: 24px;
-        }
-
-        /* ===== PESTAÑA BUSCADOR ===== */
-        .search-container {
-            margin-bottom: 30px;
-        }
-
-        .search-input-wrapper {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 16px 24px 16px 50px;
-            background: var(--bg-card);
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            font-size: 1rem;
-            color: var(--text-primary);
-            transition: var(--transition-normal);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 1.2rem;
-        }
-
-        .search-filters {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .filter-btn {
-            padding: 8px 20px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-full);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .filter-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-muted);
-        }
-
-        /* ===== PESTAÑA NOTIFICACIONES ===== */
-        .notifications-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .notification-item {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            border-left: 4px solid var(--primary);
-            transition: var(--transition-fast);
-        }
-
-        .notification-item.unread {
-            border-left-color: var(--info);
-            background: rgba(59, 130, 246, 0.05);
-        }
-
-        .notification-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-        }
-
-        .notification-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .notification-date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .notification-body {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* ===== PESTAÑA FAVORITOS ===== */
-        .favorites-empty {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-muted);
-        }
-
-        /* ===== PESTAÑA CONFIGURACIÓN PROFESIONAL ===== */
-        .settings-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .settings-section {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            margin-bottom: 24px;
-            border: 1px solid var(--border-color);
-        }
-
-        .settings-title {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-color);
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .theme-options {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .theme-option {
-            flex: 1;
-            min-width: 120px;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            text-align: center;
-            cursor: pointer;
-            transition: all var(--transition-normal);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .theme-option:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary);
-            box-shadow: var(--shadow-md);
-        }
-
-        .theme-option.active {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.1));
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
-        }
-
-        .theme-option.active::after {
-            content: "✓";
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--primary);
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-
-        .theme-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-
-        .theme-name {
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .theme-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .settings-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .setting-item {
-            display: flex;
-            justify-con;
-        }
-
-        .card-header {
-            margin-bottom: 12px;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            line-height: 1.4;
-            margin-bottom: 8px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .card-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .card-excerpt {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 16px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 16px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .read-btn {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: var(--radius-full);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-normal);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .read-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* ===== PANTALLA DE LECTURA COMPLETA ===== */
-        .article-fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--bg-primary);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 20px;
-            display: none;
-            opacity: 0;
-            transition: opacity var(--transition-normal);
-        }
-
-        .article-fullscreen.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .article-header {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            padding-top: 60px;
-        }
-
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--bg-secondary);
-            border: none;
-            color: var(--text-primary);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2001;
-            box-shadow: var(--shadow-md);
-        }
-
-        .article-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .article-meta {
-            display: flex;
-            gap: 20px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .article-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: var(--radius-lg);
-            margin: 30px 0;
-        }
-
-        .article-body {
-            max-width: 800px;
-            margin: 0 auto 60px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .article-body p {
-            margin-bottom: 24px;
-        }
-
-        /* ===== PESTAÑA BUSCADOR ===== */
-        .search-container {
-            margin-bottom: 30px;
-        }
-
-        .search-input-wrapper {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 16px 24px 16px 50px;
-            background: var(--bg-card);
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            font-size: 1rem;
-            color: var(--text-primary);
-            transition: var(--transition-normal);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 1.2rem;
-        }
-
-        .search-filters {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .filter-btn {
-            padding: 8px 20px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-full);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .filter-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-muted);
-        }
-
-        /* ===== PESTAÑA NOTIFICACIONES ===== */
-        .notifications-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .notification-item {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            border-left: 4px solid var(--primary);
-            transition: var(--transition-fast);
-        }
-
-        .notification-item.unread {
-            border-left-color: var(--info);
-            background: rgba(59, 130, 246, 0.05);
-        }
-
-        .notification-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-        }
-
-        .notification-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .notification-date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .notification-body {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* ===== PESTAÑA FAVORITOS ===== */
-        .favorites-empty {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-muted);
-        }
-
-        /* ===== PESTAÑA CONFIGURACIÓN PROFESIONAL ===== */
-        .settings-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .settings-section {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            margin-bottom: 24px;
-            border: 1px solid var(--border-color);
-        }
-
-        .settings-title {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-color);
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .theme-options {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .theme-option {
-            flex: 1;
-            min-width: 120px;
             padding: 20px;
             background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
             border: 2px solid var(--border-color);
@@ -1906,7 +1205,7 @@
                             </div>
                             <div class="social-text">
                                 <div class="social-name">Facebook</div>
-                                <div class="social-desc">Comunidad oficial</div>
+                                <div class="social-desc">Página oficial</div>
                             </div>
                         </a>
                     </div>
@@ -1944,6 +1243,9 @@
         </button>
         <div class="article-header" id="articleHeader"></div>
         <div class="article-body" id="articleBody"></div>
+        <div class="share-buttons" id="shareButtons">
+            <!-- Botones de compartir se generan aquí -->
+        </div>
     </div>
 
     <!-- MODAL DE POLÍTICA DE PRIVACIDAD -->
@@ -1962,60 +1264,60 @@
                 <h3>2. Información que Recopilamos</h3>
                 <p><strong>2.1. Información No Personal:</strong></p>
                 <ul>
-                    <li>Preferencias de visualización (tema claro/oscuro)</li>
-                    <li>Noticias marcadas como favoritas</li>
-                    <li>Historial de lectura local</li>
+                    <li>Preferencias de visualización (tema claro/oscuro).</li>
+                    <li>Noticias marcadas como favoritas.</li>
+                    <li>Historial de lectura local.</li>
                 </ul>
                 
                 <p><strong>2.2. Lo que NO recopilamos:</strong></p>
                 <ul>
-                    <li>Información personal identificable</li>
-                    <li>Direcciones IP o datos de localización</li>
-                    <li>Información de contacto</li>
+                    <li>Información personal identificable.</li>
+                    <li>Direcciones IP o datos de localización.</li>
+                    <li>Información de contacto.</li>
                 </ul>
                 
                 <h3>3. Almacenamiento Local</h3>
                 <p>Toda la información se almacena exclusivamente en tu dispositivo usando:</p>
                 <ul>
-                    <li><strong>localStorage:</strong> Para preferencias y favoritos</li>
-                    <li><strong>Cache del navegador:</strong> Para contenido descargado</li>
+                    <li><strong>localStorage:</strong> Para preferencias y favoritos.</li>
+                    <li><strong>Cache del navegador:</strong> Para contenido descargado.</li>
                 </ul>
                 <p>Puedes eliminar estos datos en cualquier momento desde la sección de Configuración.</p>
                 
                 <h3>4. Terceros</h3>
                 <p><strong>4.1. Fuentes de noticias:</strong></p>
                 <ul>
-                    <li>Las noticias se obtienen de fuentes públicas en GitHub</li>
-                    <li>No controlamos el contenido de estas fuentes</li>
+                    <li>Las noticias se obtienen de fuentes públicas en GitHub.</li>
+                    <li>Controlamos totalmente el contenido de estas fuentes ya que somos quién publicamos las noticias directamente.</li>
                 </ul>
                 
                 <p><strong>4.2. Redes sociales:</strong></p>
                 <ul>
-                    <li>Los enlaces a redes sociales abren enlaces externos</li>
-                    <li>Están sujetos a las políticas de privacidad de cada plataforma</li>
+                    <li>Los enlaces a redes sociales abren enlaces externos.</li>
+                    <li>Están sujetos a las políticas de privacidad de cada plataforma.</li>
                 </ul>
                 
                 <h3>5. Seguridad</h3>
                 <p>Implementamos las siguientes medidas de seguridad:</p>
                 <ul>
-                    <li>Todo el procesamiento ocurre localmente en tu dispositivo</li>
-                    <li>No hay servidores intermediarios</li>
-                    <li>No se transmiten datos personales</li>
+                    <li>Todo el procesamiento ocurre localmente en tu dispositivo.</li>
+                    <li>No hay servidores intermediarios.</li>
+                    <li>No se transmiten datos personales.</li>
                 </ul>
                 
                 <h3>6. Tus Derechos</h3>
                 <p>Tienes derecho a:</p>
                 <ul>
-                    <li>Eliminar todos tus datos locales</li>
-                    <li>Cambiar tus preferencias en cualquier momento</li>
-                    <li>Dejar de usar la aplicación sin dejar rastro</li>
+                    <li>Eliminar todos tus datos locales.</li>
+                    <li>Cambiar tus preferencias en cualquier momento.</li>
+                    <li>Dejar de usar la aplicación sin dejar rastro.</li>
                 </ul>
                 
                 <h3>7. Cambios en esta Política</h3>
                 <p>Podemos actualizar esta política ocasionalmente. Las versiones anteriores estarán disponibles en GitHub.</p>
                 
                 <h3>8. Contacto</h3>
-                <p>Para preguntas sobre esta política de privacidad, contacta a través de nuestras redes sociales.</p>
+                <p>Para preguntas sobre esta política de privacidad, contacta a través de nuestras redes sociales o nuestro correo electrónico [nexusestudioses@gmail.com].</p>
                 
                 <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
                     <strong>Fecha de última actualización:</strong> 01 de Diciembre, 2025
@@ -2052,8 +1354,9 @@
     <script>
         // ================= CONFIGURACIÓN =================
         const CONFIG = {
-            newsJsonUrl: "https://raw.githubusercontent.com/Disney-18/mis-noticias-ciberseguridad/refs/heads/main/noticias.json",
-            notificationsJsonUrl: "https://raw.githubusercontent.com/Disney-18/mis-noticias-ciberseguridad/refs/heads/main/notificaciones.json",
+            // Usa proxy CORS para evitar problemas
+            newsJsonUrl: "https://corsproxy.io/?https://raw.githubusercontent.com/Disney-18/mis-noticias-ciberseguridad/refs/heads/main/noticias.json",
+            notificationsJsonUrl: "https://corsproxy.io/?https://raw.githubusercontent.com/Disney-18/mis-noticias-ciberseguridad/refs/heads/main/notificaciones.json",
             cacheDuration: 10 * 60 * 1000, // 10 minutos
             defaultImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=300&fit=crop"
         };
@@ -2062,6 +1365,7 @@
         let state = {
             articles: [],
             notifications: [],
+            readNotifications: JSON.parse(localStorage.getItem('nexus_read_notifications') || '[]'),
             favorites: JSON.parse(localStorage.getItem('nexus_favorites') || '[]'),
             activity: JSON.parse(localStorage.getItem('nexus_activity') || JSON.stringify({
                 postsViewed: 0,
@@ -2174,29 +1478,46 @@
             } else if (tabId === 'searchTab') {
                 displaySearchFilters();
                 performSearch();
+            } else if (tabId === 'notificationsTab') {
+                renderNotifications();
             }
         }
 
         // ================= CARGA DE DATOS =================
         async function loadInitialData() {
             try {
+                // Mostrar estado de carga para noticias
+                document.getElementById('newsContainer').innerHTML = `
+                    <div class="loading-container">
+                        <div class="loading-spinner"></div>
+                        <p>Cargando noticias...</p>
+                    </div>
+                `;
+                
                 // Cargar noticias
-                const newsResponse = await fetch(`${CONFIG.newsJsonUrl}?t=${Date.now()}`);
-                if (!newsResponse.ok) throw new Error(`Error HTTP: ${newsResponse.status}`);
+                console.log("📡 Cargando datos desde:", CONFIG.newsJsonUrl);
+                const newsResponse = await fetch(CONFIG.newsJsonUrl);
                 
-                const newsData = await newsResponse.json();
-                state.articles = newsData.articles || [];
-                
-                // Cargar notificaciones
-                const notifResponse = await fetch(`${CONFIG.notificationsJsonUrl}?t=${Date.now()}`);
-                if (notifResponse.ok) {
-                    const notifData = await notifResponse.json();
-                    state.notifications = notifData.notifications || [];
+                if (!newsResponse.ok) {
+                    throw new Error(`Error HTTP: ${newsResponse.status}`);
                 }
                 
-                // Renderizar contenido
+                const newsData = await newsResponse.json();
+                console.log("✅ Datos recibidos:", newsData);
+                
+                // Verificar estructura
+                if (!newsData.articles || !Array.isArray(newsData.articles)) {
+                    throw new Error('Formato de JSON incorrecto');
+                }
+                
+                state.articles = newsData.articles;
+                console.log(`📊 ${state.articles.length} artículos cargados`);
+                
+                // Renderizar artículos
                 renderArticles();
-                renderNotifications();
+                
+                // Cargar notificaciones (con manejo de error mejorado)
+                await loadNotifications();
                 
                 // Guardar en caché
                 localStorage.setItem('nexus_cache', JSON.stringify({
@@ -2205,11 +1526,105 @@
                     timestamp: Date.now()
                 }));
                 
-                showNotification('✅ Noticias cargadas correctamente', 'success');
+                // Mostrar notificación de éxito
+                showNotification(`✅ ${state.articles.length} noticias cargadas`, 'success');
                 
             } catch (error) {
-                console.error('Error cargando datos:', error);
+                console.error('❌ Error cargando datos:', error);
+                
+                // Mostrar error amigable para noticias
+                document.getElementById('newsContainer').innerHTML = `
+                    <div class="loading-container">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px; color: var(--danger);"></i>
+                        <h3>Error al cargar noticias</h3>
+                        <p>${error.message}</p>
+                        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-muted);">
+                            Verifica tu conexión a internet
+                        </p>
+                        <button onclick="loadInitialData()" style="
+                            margin-top: 20px;
+                            padding: 12px 24px;
+                            background: var(--primary);
+                            color: white;
+                            border: none;
+                            border-radius: var(--radius-full);
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">
+                            <i class="fas fa-redo"></i> Reintentar
+                        </button>
+                    </div>
+                `;
+                
+                // Intentar cargar desde caché
                 loadFromCache();
+            }
+        }
+
+        async function loadNotifications() {
+            try {
+                // Mostrar estado de carga para notificaciones
+                document.getElementById('notificationsList').innerHTML = `
+                    <div class="loading-container">
+                        <div class="loading-spinner"></div>
+                        <p>Cargando notificaciones...</p>
+                    </div>
+                `;
+                
+                const notifResponse = await fetch(CONFIG.notificationsJsonUrl);
+                if (notifResponse.ok) {
+                    const notifData = await notifResponse.json();
+                    state.notifications = notifData.notifications || [];
+                    
+                    // Marcar notificaciones ya leídas
+                    state.notifications.forEach(notification => {
+                        notification.read = state.readNotifications.includes(notification.id);
+                    });
+                    
+                    renderNotifications();
+                } else {
+                    throw new Error(`Error HTTP: ${notifResponse.status}`);
+                }
+            } catch (notifError) {
+                console.warn("⚠️ No se pudieron cargar notificaciones:", notifError);
+                
+                // Mostrar error amigable en notificaciones
+                document.getElementById('notificationsList').innerHTML = `
+                    <div class="loading-container">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px; color: var(--danger);"></i>
+                        <h3>Error al cargar notificaciones</h3>
+                        <p>${notifError.message}</p>
+                        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-muted);">
+                            Sin conexión a internet
+                        </p>
+                        <button onclick="loadNotifications()" style="
+                            margin-top: 20px;
+                            padding: 12px 24px;
+                            background: var(--primary);
+                            color: white;
+                            border: none;
+                            border-radius: var(--radius-full);
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">
+                            <i class="fas fa-redo"></i> Reintentar
+                        </button>
+                    </div>
+                `;
+                
+                // Intentar cargar notificaciones desde caché
+                const cached = localStorage.getItem('nexus_cache');
+                if (cached) {
+                    const data = JSON.parse(cached);
+                    if (data.notifications && data.notifications.length > 0) {
+                        state.notifications = data.notifications;
+                        state.notifications.forEach(notification => {
+                            notification.read = state.readNotifications.includes(notification.id);
+                        });
+                        renderNotifications();
+                        showNotification('📱 Usando notificaciones en caché', 'info');
+                    }
+                }
             }
         }
 
@@ -2223,35 +1638,22 @@
                     if (now - data.timestamp < CONFIG.cacheDuration) {
                         state.articles = data.articles || [];
                         state.notifications = data.notifications || [];
+                        
+                        // Marcar notificaciones ya leídas
+                        state.notifications.forEach(notification => {
+                            notification.read = state.readNotifications.includes(notification.id);
+                        });
+                        
                         renderArticles();
                         renderNotifications();
                         showNotification('📱 Usando caché local', 'info');
-                        return;
+                        return true;
                     }
                 }
             } catch (e) {
                 console.error('Error cargando caché:', e);
             }
-            
-            // Mostrar error si no hay datos
-            document.getElementById('newsContainer').innerHTML = `
-                <div class="loading-container">
-                    <i class="fas fa-wifi-slash" style="font-size: 3rem; margin-bottom: 20px; color: var(--danger);"></i>
-                    <h3>Error de conexión</h3>
-                    <p>No se pudieron cargar las noticias.</p>
-                    <button onclick="loadInitialData()" style="
-                        margin-top: 20px;
-                        padding: 12px 24px;
-                        background: var(--primary);
-                        color: white;
-                        border: none;
-                        border-radius: var(--radius-full);
-                        cursor: pointer;
-                    ">
-                        <i class="fas fa-redo"></i> Reintentar
-                    </button>
-                </div>
-            `;
+            return false;
         }
 
         // ================= RENDERIZADO DE ARTÍCULOS =================
@@ -2269,7 +1671,24 @@
             }
             
             container.innerHTML = articles.map(article => {
+                // MANEJO SEGURO DEL CONTENIDO (puede ser array o string)
                 const content = article.content || article.excerpt || '';
+                let excerptText = '';
+                let excerptLength = 0;
+                
+                if (Array.isArray(content)) {
+                    // Si es array, tomar el primer elemento
+                    excerptText = content[0] || '';
+                    excerptLength = excerptText.length;
+                } else {
+                    // Si es string
+                    excerptText = content;
+                    excerptLength = excerptText.length;
+                }
+                
+                const shortExcerpt = excerptText.substring(0, 150);
+                const showEllipsis = excerptLength > 150;
+                
                 const date = article.date || 'Fecha no disponible';
                 
                 return `
@@ -2282,7 +1701,8 @@
                             </button>
                             <img src="${article.image || CONFIG.defaultImage}" 
                                  alt="${article.title}"
-                                 onerror="this.src='${CONFIG.defaultImage}'">
+                                 onerror="this.src='${CONFIG.defaultImage}'"
+                                 loading="lazy">
                         </div>
                         <div class="card-content">
                             <div class="card-header">
@@ -2291,7 +1711,7 @@
                                     <span>${formatDate(date)}</span>
                                 </div>
                             </div>
-                            <p class="card-excerpt">${content.substring(0, 150)}${content.length > 150 ? '...' : ''}</p>
+                            <p class="card-excerpt">${shortExcerpt}${showEllipsis ? '...' : ''}</p>
                             <div class="card-footer">
                                 <span class="card-source">
                                     <i class="fas fa-newspaper"></i>
@@ -2308,7 +1728,7 @@
             }).join('');
         }
 
-        // ================= SISTEMA DE FAVORITOS CORREGIDO =================
+        // ================= SISTEMA DE FAVORITOS =================
         function toggleFavorite(articleId, event) {
             if (event) event.stopPropagation();
             
@@ -2341,17 +1761,20 @@
 
         function displayFavorites() {
             const container = document.getElementById('favoritesContainer');
-            const emptyState = document.getElementById('emptyFavorites');
             
             if (!state.favorites || !state.favorites.length) {
-                container.innerHTML = '';
-                emptyState.style.display = 'block';
+                // Mostrar estado vacío
+                container.innerHTML = `
+                    <div class="favorites-empty">
+                        <i class="fas fa-heart" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"></i>
+                        <h3>No tienes noticias favoritas</h3>
+                        <p style="margin-top: 10px;">Marca noticias con ❤️ para verlas aquí</p>
+                    </div>
+                `;
                 return;
             }
             
-            emptyState.style.display = 'none';
-            
-            // Filtrar artículos favoritos con manejo seguro
+            // Filtrar artículos favoritos
             const favoriteArticles = state.articles.filter(article => 
                 article && article.id && state.favorites.includes(article.id)
             );
@@ -2367,8 +1790,20 @@
                 return;
             }
             
+            // Mostrar favoritos
             container.innerHTML = favoriteArticles.map(article => {
+                // MANEJO SEGURO DEL CONTENIDO
                 const content = article.content || article.excerpt || '';
+                let excerptText = '';
+                
+                if (Array.isArray(content)) {
+                    excerptText = content[0] || '';
+                } else {
+                    excerptText = content;
+                }
+                
+                const shortExcerpt = excerptText.substring(0, 150);
+                const showEllipsis = excerptText.length > 150;
                 
                 return `
                     <div class="article-card" data-id="${article.id}">
@@ -2388,7 +1823,7 @@
                                     <span>${formatDate(article.date)}</span>
                                 </div>
                             </div>
-                            <p class="card-excerpt">${content.substring(0, 150)}${content.length > 150 ? '...' : ''}</p>
+                            <p class="card-excerpt">${shortExcerpt}${showEllipsis ? '...' : ''}</p>
                             <div class="card-footer">
                                 <span class="card-source">
                                     <i class="fas fa-newspaper"></i>
@@ -2421,7 +1856,7 @@
             // Configurar contenido del artículo
             const articleHeader = document.getElementById('articleHeader');
             const articleBody = document.getElementById('articleBody');
-            const content = article.content || article.excerpt || '';
+            const shareButtons = document.getElementById('shareButtons');
             
             articleHeader.innerHTML = `
                 <h1 class="article-title">${article.title}</h1>
@@ -2433,9 +1868,54 @@
                 ${article.image ? `<img src="${article.image}" alt="${article.title}" class="article-image" onerror="this.style.display='none'">` : ''}
             `;
             
-            articleBody.innerHTML = content.split('\n').map(paragraph => 
-                `<p>${paragraph}</p>`
-            ).join('');
+            // MANEJO SEGURO DEL CONTENIDO
+            if (Array.isArray(article.content)) {
+                // Si es array, crear párrafos
+                articleBody.innerHTML = article.content
+                    .filter(paragraph => paragraph && paragraph.trim())
+                    .map(paragraph => `<p>${paragraph}</p>`)
+                    .join('');
+            } else if (article.content) {
+                // Si es string
+                articleBody.innerHTML = `<p>${article.content}</p>`;
+            } else if (article.excerpt) {
+                articleBody.innerHTML = `<p>${article.excerpt}</p>`;
+            } else {
+                articleBody.innerHTML = '<p>No hay contenido disponible.</p>';
+            }
+            
+            // Crear botones de compartir
+            const shareText = encodeURIComponent(`${article.title} - Nexus Noticias`);
+            const shareUrl = encodeURIComponent(article.url || window.location.href);
+            
+            shareButtons.innerHTML = `
+                <h3 class="share-title">
+                    <i class="fas fa-share-alt"></i>
+                    Compartir esta noticia
+                </h3>
+                <div class="share-buttons-grid">
+                    <a href="https://api.whatsapp.com/send?text=${shareText}%20${shareUrl}" 
+                       class="share-btn whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                    <a href="https://t.me/share/url?url=${shareUrl}&text=${shareText}" 
+                       class="share-btn telegram" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Telegram
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}" 
+                       class="share-btn twitter" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                        Twitter/X
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}" 
+                       class="share-btn facebook" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                        Facebook
+                    </a>
+                </div>
+            `;
             
             // Mostrar pantalla completa
             document.getElementById('articleFullscreen').classList.add('active');
@@ -2445,6 +1925,99 @@
         function closeFullscreenArticle() {
             document.getElementById('articleFullscreen').classList.remove('active');
             document.body.style.overflow = '';
+        }
+
+        // ================= NOTIFICACIONES =================
+        function renderNotifications() {
+            const container = document.getElementById('notificationsList');
+            
+            if (!state.notifications || !state.notifications.length) {
+                container.innerHTML = `
+                    <div class="loading-container">
+                        <i class="fas fa-bell-slash" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"></i>
+                        <p>No hay notificaciones disponibles</p>
+                        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-muted);">
+                            Las notificaciones se cargan desde el servidor
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Filtrar solo notificaciones no leídas (opcional) o mostrar todas
+            const notificationsToShow = state.notifications;
+            
+            // Contar notificaciones no leídas
+            state.unreadNotifications = notificationsToShow.filter(n => !n.read).length;
+            updateNotificationBadge();
+            
+            if (!notificationsToShow.length) {
+                container.innerHTML = `
+                    <div class="loading-container">
+                        <i class="fas fa-bell" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"></i>
+                        <p>Todas las notificaciones han sido leídas</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = notificationsToShow.map(notification => `
+                <div class="notification-item ${notification.read ? '' : 'unread'}" 
+                     onclick="markAsRead(${notification.id})">
+                    <div class="notification-header">
+                        <h4 class="notification-title">${notification.title}</h4>
+                        <span class="notification-date">${formatDate(notification.date)}</span>
+                    </div>
+                    <div class="notification-body">
+                        ${notification.message}
+                    </div>
+                    ${!notification.read ? '<div style="margin-top: 10px; font-size: 0.8rem; color: var(--info);"><i class="fas fa-info-circle"></i> Toca para marcar como leída</div>' : ''}
+                </div>
+            `).join('');
+        }
+
+        function markAsRead(notificationId) {
+            const notification = state.notifications.find(n => n.id === notificationId);
+            if (notification && !notification.read) {
+                notification.read = true;
+                
+                // Guardar en lista de notificaciones leídas
+                if (!state.readNotifications.includes(notificationId)) {
+                    state.readNotifications.push(notificationId);
+                    localStorage.setItem('nexus_read_notifications', JSON.stringify(state.readNotifications));
+                }
+                
+                state.unreadNotifications = Math.max(0, state.unreadNotifications - 1);
+                updateNotificationBadge();
+                
+                // Actualizar visualmente
+                const notificationElement = document.querySelector(`.notification-item[onclick*="${notificationId}"]`);
+                if (notificationElement) {
+                    notificationElement.classList.remove('unread');
+                    notificationElement.style.opacity = '0.7';
+                    notificationElement.innerHTML = notificationElement.innerHTML.replace(
+                        '<div style="margin-top: 10px; font-size: 0.8rem; color: var(--info);"><i class="fas fa-info-circle"></i> Toca para marcar como leída</div>',
+                        '<div style="margin-top: 10px; font-size: 0.8rem; color: var(--success);"><i class="fas fa-check-circle"></i> Leída</div>'
+                    );
+                }
+                
+                showNotification('✅ Notificación marcada como leída', 'success');
+            }
+        }
+
+        function updateNotificationBadge() {
+            const badge = document.getElementById('notificationBadge');
+            const navBadge = document.getElementById('navBadge');
+            
+            if (state.unreadNotifications > 0) {
+                badge.textContent = state.unreadNotifications;
+                badge.style.display = 'flex';
+                navBadge.textContent = state.unreadNotifications;
+                navBadge.style.display = 'flex';
+            } else {
+                badge.style.display = 'none';
+                navBadge.style.display = 'none';
+            }
         }
 
         // ================= BUSCADOR =================
@@ -2492,11 +2065,32 @@
             
             // Filtrar por búsqueda
             if (query) {
-                results = results.filter(article => 
-                    (article.title && article.title.toLowerCase().includes(query)) ||
-                    (article.content && article.content.toLowerCase().includes(query)) ||
-                    (article.excerpt && article.excerpt.toLowerCase().includes(query))
-                );
+                results = results.filter(article => {
+                    // Buscar en título
+                    if (article.title && article.title.toLowerCase().includes(query)) {
+                        return true;
+                    }
+                    
+                    // Buscar en contenido (manejar array o string)
+                    if (article.content) {
+                        if (Array.isArray(article.content)) {
+                            // Si es array, buscar en cada párrafo
+                            return article.content.some(paragraph => 
+                                paragraph && paragraph.toLowerCase().includes(query)
+                            );
+                        } else {
+                            // Si es string
+                            return article.content.toLowerCase().includes(query);
+                        }
+                    }
+                    
+                    // Buscar en excerpt
+                    if (article.excerpt && article.excerpt.toLowerCase().includes(query)) {
+                        return true;
+                    }
+                    
+                    return false;
+                });
             }
             
             displaySearchResults(results);
@@ -2519,7 +2113,18 @@
             container.innerHTML = `
                 <div class="news-grid">
                     ${articles.map(article => {
+                        // MANEJO SEGURO DEL CONTENIDO
                         const content = article.content || article.excerpt || '';
+                        let excerptText = '';
+                        
+                        if (Array.isArray(content)) {
+                            excerptText = content[0] || '';
+                        } else {
+                            excerptText = content;
+                        }
+                        
+                        const shortExcerpt = excerptText.substring(0, 120);
+                        const showEllipsis = excerptText.length > 120;
                         
                         return `
                             <div class="article-card" data-id="${article.id}">
@@ -2540,7 +2145,7 @@
                                             <span>${formatDate(article.date)}</span>
                                         </div>
                                     </div>
-                                    <p class="card-excerpt">${content.substring(0, 120)}${content.length > 120 ? '...' : ''}</p>
+                                    <p class="card-excerpt">${shortExcerpt}${showEllipsis ? '...' : ''}</p>
                                     <div class="card-footer">
                                         <button class="read-btn" onclick="openArticle(${article.id})">
                                             Leer
@@ -2553,63 +2158,6 @@
                     }).join('')}
                 </div>
             `;
-        }
-
-        // ================= NOTIFICACIONES =================
-        function renderNotifications() {
-            const container = document.getElementById('notificationsList');
-            
-            if (!state.notifications.length) {
-                container.innerHTML = `
-                    <div class="loading-container">
-                        <i class="fas fa-bell-slash" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"></i>
-                        <p>No hay alertas</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            // Contar notificaciones no leídas
-            state.unreadNotifications = state.notifications.filter(n => !n.read).length;
-            updateNotificationBadge();
-            
-            container.innerHTML = state.notifications.map(notification => `
-                <div class="notification-item ${notification.read ? '' : 'unread'}" 
-                     onclick="markAsRead(${notification.id})">
-                    <div class="notification-header">
-                        <h4 class="notification-title">${notification.title}</h4>
-                        <span class="notification-date">${formatDate(notification.date)}</span>
-                    </div>
-                    <div class="notification-body">
-                        ${notification.message}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function markAsRead(notificationId) {
-            const notification = state.notifications.find(n => n.id === notificationId);
-            if (notification && !notification.read) {
-                notification.read = true;
-                state.unreadNotifications = Math.max(0, state.unreadNotifications - 1);
-                updateNotificationBadge();
-                showNotification('✅ Notificación marcada como leída', 'success');
-            }
-        }
-
-        function updateNotificationBadge() {
-            const badge = document.getElementById('notificationBadge');
-            const navBadge = document.getElementById('navBadge');
-            
-            if (state.unreadNotifications > 0) {
-                badge.textContent = state.unreadNotifications;
-                badge.style.display = 'flex';
-                navBadge.textContent = state.unreadNotifications;
-                navBadge.style.display = 'flex';
-            } else {
-                badge.style.display = 'none';
-                navBadge.style.display = 'none';
-            }
         }
 
         // ================= ESTADÍSTICAS =================
@@ -2631,16 +2179,21 @@
 
         // ================= LIMPIAR DATOS =================
         function clearData() {
-            if (confirm('¿Estás seguro de que quieres eliminar todos los datos locales? Esto incluye favoritos, historial y preferencias.')) {
+            if (confirm('¿Estás seguro de que quieres eliminar todos los datos locales? Esto incluye favoritos, historial, notificaciones leídas y preferencias.')) {
                 localStorage.removeItem('nexus_favorites');
                 localStorage.removeItem('nexus_activity');
                 localStorage.removeItem('nexus_cache');
+                localStorage.removeItem('nexus_theme');
+                localStorage.removeItem('nexus_read_notifications');
                 
                 // Resetear estado
                 state.favorites = [];
                 state.activity = { postsViewed: 0, lastRead: null };
-                state.articles = [];
-                state.notifications = [];
+                state.theme = 'dark';
+                state.readNotifications = [];
+                
+                // Aplicar tema por defecto
+                applyTheme('dark');
                 
                 // Recargar datos
                 loadInitialData();
@@ -2660,7 +2213,7 @@
                 performSearch();
             });
             
-            // Cerrar política de privacidad con Escape
+            // Cerrar con Escape
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     if (document.getElementById('privacyModal').classList.contains('active')) {
@@ -2672,7 +2225,7 @@
                 }
             });
             
-            // Cerrar política de privacidad al hacer clic fuera
+            // Cerrar modal al hacer clic fuera
             document.getElementById('privacyModal').addEventListener('click', function(e) {
                 if (e.target === this) closePrivacyPolicy();
             });
@@ -2707,6 +2260,7 @@
         }
 
         function showNotification(message, type = 'info') {
+            // Crear notificación
             const notification = document.createElement('div');
             notification.className = 'notification-item';
             notification.style.position = 'fixed';
@@ -2721,10 +2275,21 @@
             notification.style.padding = '12px 20px';
             notification.style.borderRadius = 'var(--radius-md)';
             notification.style.boxShadow = 'var(--shadow-lg)';
-            notification.textContent = message;
+            notification.style.borderLeft = '4px solid ' + (type === 'error' ? 'var(--danger-dark)' : 
+                                                          type === 'success' ? 'var(--success-dark)' : 
+                                                          type === 'warning' ? 'var(--warning-dark)' : 'var(--primary-dark)');
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas ${type === 'error' ? 'fa-exclamation-circle' : 
+                                   type === 'success' ? 'fa-check-circle' : 
+                                   type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
             
             document.body.appendChild(notification);
             
+            // Animar entrada
             setTimeout(() => {
                 notification.style.opacity = '0';
                 notification.style.transform = 'translateX(100%)';
