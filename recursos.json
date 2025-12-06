@@ -1,0 +1,74 @@
+{
+  "title": "Recursos Utilizados",
+  "version": "1.0",
+  "lastUpdated": "01 de Diciembre, 2025",
+  "categories": [
+    {
+      "name": "Iconos",
+      "items": [
+        {
+          "name": "Tabler Icons",
+          "description": "Iconos modernos y elegantes",
+          "url": "https://tabler-icons.io/",
+          "license": "MIT"
+        },
+        {
+          "name": "Font Awesome",
+          "description": "Iconos para redes sociales",
+          "url": "https://fontawesome.com/",
+          "license": "Font Awesome Free License"
+        }
+      ]
+    },
+    {
+      "name": "Librerías JavaScript",
+      "items": [
+        {
+          "name": "marked.js",
+          "description": "Procesador de Markdown",
+          "url": "https://marked.js.org/",
+          "license": "MIT"
+        }
+      ]
+    },
+    {
+      "name": "Imágenes",
+      "items": [
+        {
+          "name": "Unsplash",
+          "description": "Imagen por defecto para noticias",
+          "url": "https://unsplash.com/",
+          "license": "Unsplash License"
+        }
+      ]
+    },
+    {
+      "name": "Servicios",
+      "items": [
+        {
+          "name": "CORS Proxy",
+          "description": "Proxy para evitar problemas CORS",
+          "url": "https://corsproxy.io/",
+          "license": "Pública"
+        },
+        {
+          "name": "GitHub",
+          "description": "Hosting de archivos JSON",
+          "url": "https://github.com/",
+          "license": "GPL"
+        }
+      ]
+    },
+    {
+      "name": "Desarrollo",
+      "items": [
+        {
+          "name": "HTML5 / CSS3 / JavaScript",
+          "description": "Tecnologías base de la aplicación",
+          "url": "#",
+          "license": "Estándares Web"
+        }
+      ]
+    }
+  ]
+}

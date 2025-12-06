@@ -1,0 +1,36 @@
+{
+  "title": "Lista de Cambios",
+  "version": "1.0.0",
+  "lastUpdated": "01 de Diciembre, 2025",
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "01/12/2025",
+      "title": "Lanzamiento Inicial",
+      "changes": [
+        "✅ Aplicación completamente funcional",
+        "✅ Sistema de noticias desde JSON",
+        "✅ Sistema de notificaciones",
+        "✅ Política de privacidad dinámica",
+        "✅ Buscador profesional",
+        "✅ Sistema de favoritos",
+        "✅ Estadísticas detalladas",
+        "✅ Tema claro/oscuro",
+        "✅ Compartir noticias",
+        "✅ Interfaz responsive"
+      ]
+    },
+    {
+      "version": "1.0.1",
+      "date": "02/12/2025",
+      "title": "Mejoras y Correcciones",
+      "changes": [
+        "✅ Corregido sistema de notificaciones",
+        "✅ Agregada lista de cambios",
+        "✅ Agregada sección de recursos",
+        "✅ Mejorado rendimiento de carga",
+        "✅ Optimizado sistema de caché"
+      ]
+    }
+  ]
+}
