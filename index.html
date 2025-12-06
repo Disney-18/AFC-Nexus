@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title> AFC Nexus</title>
+    <title> AFC NEXUS</title>
     <!-- TABLER ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <!-- Font Awesome para redes sociales -->
@@ -1571,7 +1571,7 @@
             <div class="logo-icon">
                 <i class="ti ti-news"></i>
             </div>
-            <h1 class="logo-text">AFC Nexus</h1>
+            <h1 class="logo-text">AFC NEXUS</h1>
         </div>
         <div class="header-actions">
             <button class="search-btn" id="searchHeaderBtn" title="Buscar">
@@ -1814,7 +1814,7 @@
                     <div class="info-grid">
                         <div class="info-item">
                             <div class="info-label">Versión</div>
-                            <div class="info-value">AFC Nexus v1.0.0</div>
+                            <div class="info-value">AFC NEXUS v1.0.0</div>
                         </div>
                         <div class="info-item">
                             <div class="info-label">Build</div>
@@ -1887,7 +1887,7 @@
         <div class="stats-content">
             <div class="stats-header">
                 <h1 class="stats-main-title">Estadísticas Detalladas</h1>
-                <p class="stats-subtitle">Análisis completo de tu actividad en AFC Nexus</p>
+                <p class="stats-subtitle">Análisis completo de tu actividad en AFC NEXUS</p>
             </div>
             
             <div class="stats-grid-large" id="detailedStatsGrid">
@@ -1923,7 +1923,7 @@
             
             <div class="privacy-body-full">
                 <h2>1. Introducción</h2>
-                <p>En <strong>Nexus Studios</strong>, valoramos y respetamos tu privacidad. Esta Política de Privacidad describe cómo recopilamos, usamos, almacenamos y protegemos tu información cuando utilizas nuestra aplicación <strong>AFC Nexus</strong>.</p>
+                <p>En <strong>Nexus Studios</strong>, valoramos y respetamos tu privacidad. Esta Política de Privacidad describe cómo recopilamos, usamos, almacenamos y protegemos tu información cuando utilizas nuestra aplicación <strong>AFC NEXUS</strong>.</p>
                 <p>Nos comprometemos a proteger tus datos personales y a garantizar que tu experiencia sea segura y transparente.</p>
                 
                 <h2>2. Información que Recopilamos</h2>
@@ -2007,7 +2007,7 @@
                 </ul>
                 
                 <h2>8. Menores de Edad</h2>
-                <p>AFC Nexus no está dirigida a menores de 13 años. No recopilamos conscientemente información de menores. Si eres padre/tutor y descubres que tu hijo nos ha proporcionado datos, contáctanos inmediatamente.</p>
+                <p>AFC NEXUS no está dirigida a menores de 13 años. No recopilamos conscientemente información de menores. Si eres padre/tutor y descubres que tu hijo nos ha proporcionado datos, contáctanos inmediatamente.</p>
                 
                 <h2>9. Cambios en esta Política</h2>
                 <p>Podemos actualizar esta Política de Privacidad periódicamente. Te notificaremos sobre cambios significativos mediante:</p>
@@ -2023,12 +2023,12 @@
                     <li><strong>Email:</strong> nexusestudioses@gmail.com</li>
                     <li><strong>Telegram:</strong> @NexusStudios_ES</li>
                     <li><strong>Twitter/X:</strong> @Sin_Red18</li>
-                    <li><strong>Facebook:</strong> AFC Nexus</li>
+                    <li><strong>Facebook:</strong> AFC NEXUS</li>
                 </ul>
                 <p>Responderemos a todas las consultas en un plazo máximo de 48 horas hábiles.</p>
                 
                 <h2>11. Consentimiento</h2>
-                <p>Al usar AFC Nexus, aceptas los términos de esta Política de Privacidad. Si no estás de acuerdo con alguno de los términos, por favor no utilices la aplicación.</p>
+                <p>Al usar AFC NEXUS, aceptas los términos de esta Política de Privacidad. Si no estás de acuerdo con alguno de los términos, por favor no utilices la aplicación.</p>
                 
                 <p style="margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color);">
                     <strong>Fecha de entrada en vigor:</strong> 01 de Diciembre, 2025<br>
@@ -3267,6 +3267,42 @@
                 setTimeout(() => notification.remove(), 300);
             }, 3000);
         }
+    </script>
+       
+    <script>
+        (function() {
+            // Activar Eruda solo si la URL contiene el código secreto
+            var debeCargarEruda = window.location.search.includes('debug=true') || 
+                                  window.location.hash === '#debug';
+            
+            if (debeCargarEruda) {
+                console.log('🔧 Activando herramientas de depuración Eruda...');
+                
+                // Crear y cargar el script de Eruda
+                var script = document.createElement('script');
+                script.src = "https://cdn.jsdelivr.net/npm/eruda";
+                script.crossOrigin = "anonymous";
+                
+                script.onload = function () {
+                    eruda.init();
+                    console.log('Eruda cargado correctamente. Usa el botón verde en la esquina.');
+                };
+                
+                script.onerror = function () {
+                    // Si falla el primer CDN, intentar con uno de respaldo
+                    console.log('Primer CDN falló, intentando con respaldo...');
+                    var scriptBackup = document.createElement('script');
+                    scriptBackup.src = "https://unpkg.com/eruda";
+                    scriptBackup.onload = function () { 
+                        eruda.init(); 
+                        console.log('Eruda cargado desde respaldo.');
+                    };
+                    document.body.appendChild(scriptBackup);
+                };
+                
+                document.body.appendChild(script);
+            }
+        })();
     </script>
 </body>
 </html>
