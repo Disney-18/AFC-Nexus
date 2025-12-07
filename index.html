@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title> AFC NEXUS</title>
+    <title>AFC NEXUS</title>
     <!-- TABLER ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <!-- Font Awesome para redes sociales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- marked.js para renderizado de Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         /* ===== VARIABLES GLOBALES ===== */
         :root {
@@ -485,7 +487,7 @@
             color: white;
         }
 
-        /* ===== PANTALLA DE LECTURA COMPLETA (MEJORADA) ===== */
+        /* ===== PANTALLA DE LECTURA COMPLETA ===== */
         .article-fullscreen {
             position: fixed;
             top: 0;
@@ -575,16 +577,150 @@
             margin-bottom: 40px;
         }
 
-        .article-body p {
-            margin-bottom: 24px;
+        /* ===== ESTILOS PARA MARKDOWN ===== */
+        .article-body h1, .article-body h2, .article-body h3, 
+        .article-body h4, .article-body h5, .article-body h6 {
+            color: var(--text-primary);
+            margin: 1.5em 0 0.8em;
+            font-weight: 600;
+            line-height: 1.3;
         }
 
-        .article-body h2, .article-body h3 {
-            margin: 32px 0 16px;
+        .article-body h1 { font-size: 2rem; }
+        .article-body h2 { font-size: 1.7rem; }
+        .article-body h3 { font-size: 1.4rem; }
+        .article-body h4 { font-size: 1.2rem; }
+        .article-body h5 { font-size: 1.1rem; }
+        .article-body h6 { font-size: 1rem; }
+
+        .article-body p {
+            line-height: 1.7;
+            margin-bottom: 1.2em;
+        }
+
+        .article-body ul, .article-body ol {
+            padding-left: 2em;
+            margin-bottom: 1.2em;
+        }
+
+        .article-body li {
+            margin-bottom: 0.6em;
+            line-height: 1.6;
+        }
+
+        .article-body li > ul,
+        .article-body li > ol {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .article-body code {
+            background: var(--bg-tertiary);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
             color: var(--text-primary);
         }
 
-        /* ===== COMPARTIR NOTICIA (SIMPLIFICADO - SOLO ICONOS) ===== */
+        .article-body pre {
+            background: var(--bg-secondary);
+            padding: 1em;
+            border-radius: var(--radius-md);
+            overflow-x: auto;
+            margin-bottom: 1.5em;
+            border: 1px solid var(--border-color);
+        }
+
+        .article-body pre code {
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            font-size: 0.95em;
+            line-height: 1.5;
+            display: block;
+        }
+
+        .article-body blockquote {
+            border-left: 4px solid var(--primary);
+            padding-left: 1.2em;
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 1.5em;
+            color: var(--text-secondary);
+            font-style: italic;
+            background: rgba(139, 92, 246, 0.05);
+            padding: 1em 1em 1em 1.5em;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+
+        .article-body blockquote p {
+            margin-bottom: 0.5em;
+        }
+
+        .article-body blockquote p:last-child {
+            margin-bottom: 0;
+        }
+
+        .article-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5em;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .article-body th, .article-body td {
+            border: 1px solid var(--border-color);
+            padding: 0.75em 1em;
+            text-align: left;
+        }
+
+        .article-body th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .article-body tr:nth-child(even) {
+            background: rgba(139, 92, 246, 0.02);
+        }
+
+        .article-body a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .article-body a:hover {
+            text-decoration: underline;
+        }
+
+        .article-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            margin: 1em 0;
+        }
+
+        .article-body hr {
+            border: none;
+            height: 1px;
+            background: var(--border-color);
+            margin: 2em 0;
+        }
+
+        .article-body strong {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .article-body em {
+            font-style: italic;
+        }
+
+        /* ===== COMPARTIR NOTICIA ===== */
         .share-section {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
@@ -848,6 +984,7 @@
             padding: 20px;
             border-left: 4px solid var(--primary);
             transition: var(--transition-fast);
+            cursor: pointer;
         }
 
         .notification-item.unread {
@@ -1184,26 +1321,29 @@
             font-weight: 600;
             color: var(--text-primary);
             font-size: 1rem;
-            
         }
-        /* ===== PIE DE PÁGINA ===== */
-.footer-text {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    padding: 30px 20px 20px;
-    margin-top: 20px;
-    border-top: 1px solid var(--border-color);
-    width: 100%;
-}
+        
+        /* ===== PIE DE PÁGINA ESPECÍFICO PARA CONFIGURACIÓN ===== */
+        .settings-footer-text {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding: 30px 20px 20px;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-/* Responsive para pie de página */
-@media (max-width: 640px) {
-    .footer-text {
-        padding: 25px 15px 15px;
-        font-size: 0.85rem;
-    }
-}
+        /* Responsive para pie de página */
+        @media (max-width: 640px) {
+            .settings-footer-text {
+                padding: 25px 15px 15px;
+                font-size: 0.85rem;
+            }
+        }
 
         /* ESTADÍSTICAS DETALLADAS (PANTALLA COMPLETA) */
         .stats-fullscreen {
@@ -1348,7 +1488,9 @@
             transform: rotate(90deg);
         }
 
-        /* POLÍTICA DE PRIVACIDAD (PANTALLA COMPLETA) */
+        /* ===== PANTALLAS FULLSCREEN ===== */
+        .changes-fullscreen,
+        .resources-fullscreen,
         .privacy-fullscreen {
             position: fixed;
             top: 0;
@@ -1363,21 +1505,29 @@
             transition: opacity var(--transition-normal);
         }
 
+        .changes-fullscreen.active,
+        .resources-fullscreen.active,
         .privacy-fullscreen.active {
             display: block;
             opacity: 1;
         }
 
+        .changes-content-full,
+        .resources-content-full,
         .privacy-content-full {
             max-width: 800px;
             margin: 0 auto;
             padding: 80px 20px 40px;
         }
 
+        .changes-header-full,
+        .resources-header-full,
         .privacy-header-full {
             margin-bottom: 40px;
         }
 
+        .changes-title-full,
+        .resources-title-full,
         .privacy-title-full {
             font-size: 2.5rem;
             line-height: 1.2;
@@ -1385,6 +1535,8 @@
             color: var(--text-primary);
         }
 
+        .changes-meta-full,
+        .resources-meta-full,
         .privacy-meta-full {
             color: var(--text-muted);
             font-size: 0.95rem;
@@ -1392,11 +1544,15 @@
             border-bottom: 1px solid var(--border-color);
         }
 
+        .changes-body-full,
+        .resources-body-full,
         .privacy-body-full {
             font-size: 1.125rem;
             line-height: 1.8;
         }
 
+        .changes-body-full h2,
+        .resources-body-full h2,
         .privacy-body-full h2 {
             font-size: 1.8rem;
             margin: 40px 0 20px;
@@ -1405,30 +1561,46 @@
             border-bottom: 2px solid var(--primary);
         }
 
+        .changes-body-full h3,
+        .resources-body-full h3,
         .privacy-body-full h3 {
             font-size: 1.4rem;
             margin: 30px 0 15px;
             color: var(--text-primary);
         }
 
+        .changes-body-full p,
+        .resources-body-full p,
         .privacy-body-full p {
             margin-bottom: 20px;
         }
 
-        .privacy-body-full ul, .privacy-body-full ol {
+        .changes-body-full ul,
+        .changes-body-full ol,
+        .resources-body-full ul,
+        .resources-body-full ol,
+        .privacy-body-full ul,
+        .privacy-body-full ol {
             margin: 15px 0 15px 30px;
         }
 
+        .changes-body-full li,
+        .resources-body-full li,
         .privacy-body-full li {
             margin-bottom: 10px;
             line-height: 1.6;
         }
 
+        .changes-body-full strong,
+        .resources-body-full strong,
         .privacy-body-full strong {
             color: var(--text-primary);
             font-weight: 600;
         }
 
+        /* Botones de cierre */
+        .changes-close-btn,
+        .resources-close-btn,
         .privacy-close-btn {
             position: fixed;
             top: 20px;
@@ -1449,6 +1621,8 @@
             transition: var(--transition-fast);
         }
 
+        .changes-close-btn:hover,
+        .resources-close-btn:hover,
         .privacy-close-btn:hover {
             background: var(--primary);
             color: white;
@@ -1548,6 +1722,12 @@
                 width: 45px;
                 height: 45px;
                 font-size: 1.2rem;
+            }
+            
+            .changes-title-full,
+            .resources-title-full,
+            .privacy-title-full {
+                font-size: 2rem;
             }
         }
         
@@ -1740,6 +1920,44 @@
                     </div>
                 </section>
 
+                <!-- SECCIÓN HISTORIAL DE CAMBIOS -->
+                <section class="settings-section">
+                    <h3 class="settings-title">
+                        <i class="ti ti-history"></i>
+                        Historial de Cambios
+                    </h3>
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-title">Lista de Cambios</div>
+                                <div class="setting-desc">Versiones y novedades de la app</div>
+                            </div>
+                            <button class="setting-action" onclick="loadChanges()">
+                                Ver
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN RECURSOS -->
+                <section class="settings-section">
+                    <h3 class="settings-title">
+                        <i class="ti ti-tool"></i>
+                        Recursos Utilizados
+                    </h3>
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-title">Tecnologías y Herramientas</div>
+                                <div class="setting-desc">Bibliotecas, APIs y recursos usados</div>
+                            </div>
+                            <button class="setting-action" onclick="loadResources()">
+                                Ver
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- SECCIÓN PRIVACIDAD Y SEGURIDAD -->
                 <section class="settings-section">
                     <h3 class="settings-title">
@@ -1752,7 +1970,7 @@
                                 <div class="setting-title">Política de Privacidad</div>
                                 <div class="setting-desc">Cómo manejamos tu información</div>
                             </div>
-                            <button class="setting-action" onclick="openPrivacyPolicyFull()">
+                            <button class="setting-action" onclick="loadPrivacyPolicy()">
                                 Ver
                             </button>
                         </div>
@@ -1814,23 +2032,25 @@
                     <div class="info-grid">
                         <div class="info-item">
                             <div class="info-label">Versión</div>
-                            <div class="info-value">AFC NEXUS v1.0.0</div>
+                            <div class="info-value">AFC NEXUS v1.0.1</div>
                         </div>
                         <div class="info-item">
                             <div class="info-label">Build</div>
-                            <div class="info-value" style="color: var(--primary);">2025.11.30</div>
+                            <div class="info-value" style="color: var(--primary);">2025.12.02</div>
                         </div>
                     </div>
                 </section>
 
-                <!-- PIE DE PÁGINA -->
-                <div class="footer-text">
-                   &copy 2025, Hecho por Nexus Studios.
+                <!-- PIE DE PÁGINA SOLO PARA CONFIGURACIÓN -->
+                <div class="settings-footer-text">
+                    &copy; 2025, Hecho por Nexus Studios.
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- ===== PANTALLAS FULLSCREEN (FUERA DEL MAIN) ===== -->
+    
     <!-- PANTALLA DE LECTURA COMPLETA -->
     <div class="article-fullscreen" id="articleFullscreen">
         <button class="back-button" onclick="closeFullscreenArticle()">
@@ -1914,126 +2134,48 @@
         
         <div class="privacy-content-full">
             <div class="privacy-header-full">
-                <h1 class="privacy-title-full">Política de Privacidad</h1>
-                <div class="privacy-meta-full">
-                    <p><strong>Última actualización:</strong> 01 de Diciembre, 2025</p>
-                    <p><strong>Versión:</strong> 1.0</p>
-                </div>
+                <h1 class="privacy-title-full" id="privacyTitle">Política de Privacidad</h1>
+                <div class="privacy-meta-full" id="privacyMeta"></div>
             </div>
             
-            <div class="privacy-body-full">
-                <h2>1. Introducción</h2>
-                <p>En <strong>Nexus Studios</strong>, valoramos y respetamos tu privacidad. Esta Política de Privacidad describe cómo recopilamos, usamos, almacenamos y protegemos tu información cuando utilizas nuestra aplicación <strong>AFC NEXUS</strong>.</p>
-                <p>Nos comprometemos a proteger tus datos personales y a garantizar que tu experiencia sea segura y transparente.</p>
-                
-                <h2>2. Información que Recopilamos</h2>
-                <h3>2.1. Información de Uso</h3>
-                <ul>
-                    <li><strong>Preferencias de visualización:</strong> Tema claro/oscuro seleccionado.</li>
-                    <li><strong>Contenido favorito:</strong> Noticias marcadas como favoritas.</li>
-                    <li><strong>Historial de lectura:</strong> Noticias que has leído.</li>
-                    <li><strong>Estadísticas de uso:</strong> Conteo de noticias vistas y tiempo de lectura.</li>
-                </ul>
-                
-                <h3>2.2. Información Técnica</h3>
-                <ul>
-                    <li><strong>Información del dispositivo:</strong> Tipo de dispositivo, sistema operativo, versión de la aplicación.</li>
-                    <li><strong>Datos de rendimiento:</strong> Tiempos de carga, errores y crash reports.</li>
-                </ul>
-                
-                <h3>2.3. Lo que NO Recopilamos</h3>
-                <p>Nos comprometemos a NO recopilar:</p>
-                <ul>
-                    <li>Información personal identificable (nombre, email, teléfono).</li>
-                    <li>Direcciones IP o datos de localización precisa.</li>
-                    <li>Información de contactos o agenda.</li>
-                    <li>Datos de otras aplicaciones.</li>
-                </ul>
-                
-                <h2>3. Cómo Usamos tu Información</h2>
-                <p>Utilizamos la información recopilada para:</p>
-                <ul>
-                    <li><strong>Personalizar tu experiencia:</strong> Mantener tus preferencias de tema y favoritos.</li>
-                    <li><strong>Mejorar la aplicación:</strong> Analizar estadísticas de uso para optimizar funciones.</li>
-                    <li><strong>Proporcionar contenido relevante:</strong> Mostrar noticias según tu historial de lectura.</li>
-                    <li><strong>Garantizar seguridad:</strong> Prevenir actividades fraudulentas o abusivas.</li>
-                </ul>
-                
-                <h2>4. Almacenamiento de Datos</h2>
-                <h3>4.1. Almacenamiento Local</h3>
-                <p>Todos los datos se almacenan exclusivamente en tu dispositivo utilizando:</p>
-                <ul>
-                    <li><strong>localStorage del navegador:</strong> Para preferencias, favoritos e historial.</li>
-                    <li><strong>Cache de la aplicación:</strong> Para contenido descargado y mejorar el rendimiento.</li>
-                </ul>
-                
-                <h3>4.2. Retención de Datos</h3>
-                <p>Los datos se mantienen en tu dispositivo hasta que:</p>
-                <ul>
-                    <li>Los elimines manualmente desde la configuración de la aplicación.</li>
-                    <li>Desinstales la aplicación.</li>
-                    <li>Limpies el caché y datos de tu navegador.</li>
-                </ul>
-                
-                <h2>5. Terceros y Servicios Externos</h2>
-                <h3>5.1. Fuentes de Contenido</h3>
-                <p>Las noticias se obtienen de fuentes públicas en GitHub que controlamos directamente. Todo el contenido es verificado y publicado por nuestro equipo.</p>
-                
-                <h3>5.2. Redes Sociales</h3>
-                <p>Los enlaces a redes sociales son proporcionados como referencia y están sujetos a las políticas de privacidad de cada plataforma:</p>
-                <ul>
-                    <li>Telegram: <a href="https://telegram.org/privacy" target="_blank" rel="noopener">Política de Privacidad</a></li>
-                    <li>Twitter/X: <a href="https://twitter.com/privacy" target="_blank" rel="noopener">Política de Privacidad</a></li>
-                    <li>Facebook: <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">Política de Privacidad</a></li>
-                </ul>
-                
-                <h2>6. Seguridad</h2>
-                <p>Implementamos medidas de seguridad robustas para proteger tu información:</p>
-                <ul>
-                    <li><strong>Procesamiento local:</strong> Todo el procesamiento ocurre en tu dispositivo.</li>
-                    <li><strong>Sin servidores intermediarios:</strong> No hay transmisión de datos personales.</li>
-                    <li><strong>Encriptación:</strong> Los datos almacenados localmente están protegidos.</li>
-                    <li><strong>Acceso limitado:</strong> Solo la aplicación tiene acceso a tus datos locales.</li>
-                </ul>
-                
-                <h2>7. Tus Derechos</h2>
-                <p>Como usuario, tienes derecho a:</p>
-                <ul>
-                    <li><strong>Acceso:</strong> Ver los datos almacenados localmente.</li>
-                    <li><strong>Eliminación:</strong> Borrar todos tus datos en cualquier momento.</li>
-                    <li><strong>Control:</strong> Modificar tus preferencias cuando lo desees.</li>
-                    <li><strong>Portabilidad:</strong> Los datos son fácilmente exportables desde tu dispositivo.</li>
-                    <li><strong>Olvido:</strong> Desinstalar la aplicación elimina todos tus datos.</li>
-                </ul>
-                
-                <h2>8. Menores de Edad</h2>
-                <p>AFC NEXUS no está dirigida a menores de 13 años. No recopilamos conscientemente información de menores. Si eres padre/tutor y descubres que tu hijo nos ha proporcionado datos, contáctanos inmediatamente.</p>
-                
-                <h2>9. Cambios en esta Política</h2>
-                <p>Podemos actualizar esta Política de Privacidad periódicamente. Te notificaremos sobre cambios significativos mediante:</p>
-                <ul>
-                    <li>Actualizaciones dentro de la aplicación.</li>
-                    <li>Notificaciones en nuestras redes sociales oficiales.</li>
-                    <li>Versiones anteriores disponibles en nuestro repositorio.</li>
-                </ul>
-                
-                <h2>10. Contacto</h2>
-                <p>Si tienes preguntas, preocupaciones o solicitudes relacionadas con esta Política de Privacidad, puedes contactarnos a través de:</p>
-                <ul>
-                    <li><strong>Email:</strong> nexusestudioses@gmail.com</li>
-                    <li><strong>Telegram:</strong> @NexusStudios_ES</li>
-                    <li><strong>Twitter/X:</strong> @Sin_Red18</li>
-                    <li><strong>Facebook:</strong> AFC NEXUS</li>
-                </ul>
-                <p>Responderemos a todas las consultas en un plazo máximo de 48 horas hábiles.</p>
-                
-                <h2>11. Consentimiento</h2>
-                <p>Al usar AFC NEXUS, aceptas los términos de esta Política de Privacidad. Si no estás de acuerdo con alguno de los términos, por favor no utilices la aplicación.</p>
-                
-                <p style="margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border-color);">
-                    <strong>Fecha de entrada en vigor:</strong> 01 de Diciembre, 2025<br>
-                    <strong>Última revisión:</strong> 01 de Diciembre, 2025
-                </p>
+            <div class="privacy-body-full" id="privacyBody">
+                <!-- Se carga dinámicamente desde JSON -->
+            </div>
+        </div>
+    </div>
+
+    <!-- HISTORIAL DE CAMBIOS (PANTALLA COMPLETA) -->
+    <div class="changes-fullscreen" id="changesFullscreen">
+        <button class="changes-close-btn" onclick="closeChanges()">
+            <i class="ti ti-arrow-left"></i>
+        </button>
+        
+        <div class="changes-content-full">
+            <div class="changes-header-full">
+                <h1 class="changes-title-full" id="changesTitle">Historial de Cambios</h1>
+                <div class="changes-meta-full" id="changesMeta"></div>
+            </div>
+            
+            <div class="changes-body-full" id="changesBody">
+                <!-- Se carga dinámicamente desde JSON -->
+            </div>
+        </div>
+    </div>
+
+    <!-- RECURSOS UTILIZADOS (PANTALLA COMPLETA) -->
+    <div class="resources-fullscreen" id="resourcesFullscreen">
+        <button class="resources-close-btn" onclick="closeResources()">
+            <i class="ti ti-arrow-left"></i>
+        </button>
+        
+        <div class="resources-content-full">
+            <div class="resources-header-full">
+                <h1 class="resources-title-full" id="resourcesTitle">Recursos Utilizados</h1>
+                <div class="resources-meta-full" id="resourcesMeta"></div>
+            </div>
+            
+            <div class="resources-body-full" id="resourcesBody">
+                <!-- Se carga dinámicamente desde JSON -->
             </div>
         </div>
     </div>
@@ -2063,19 +2205,54 @@
         </button>
     </nav>
 
+    <!-- JAVASCRIPT CON TODAS LAS CORRECCIONES -->
     <script>
         // ================= CONFIGURACIÓN =================
         const CONFIG = {
             newsJsonUrl: "https://corsproxy.io/?https://raw.githubusercontent.com/Disney-18/AFC-Nexus/refs/heads/main/noticias.json",
             notificationsJsonUrl: "https://corsproxy.io/?https://raw.githubusercontent.com/Disney-18/AFC-Nexus/refs/heads/main/notificaciones.json",
+            privacyJsonUrl: "https://corsproxy.io/?https://raw.githubusercontent.com/Disney-18/AFC-Nexus/refs/heads/main/privacidad.json",
+            changesJsonUrl: "https://corsproxy.io/?https://raw.githubusercontent.com/Disney-18/AFC-Nexus/refs/heads/main/changelog.json",
+            resourcesJsonUrl: "https://corsproxy.io/?https://raw.githubusercontent.com/Disney-18/AFC-Nexus/refs/heads/main/recursos.json",
             cacheDuration: 10 * 60 * 1000,
             defaultImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=300&fit=crop"
         };
+
+        // ================= CONFIGURACIÓN DE MARKED.JS =================
+        if (typeof marked === 'undefined') {
+            console.error('marked.js no se cargó correctamente. Recargando...');
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+            script.onload = function() {
+                console.log('marked.js cargado dinámicamente');
+                initMarked();
+            };
+            document.head.appendChild(script);
+        } else {
+            initMarked();
+        }
+
+        function initMarked() {
+            marked.setOptions({
+                breaks: true,
+                gfm: true,
+                headerIds: false,
+                mangle: false,
+                sanitize: false,
+                smartLists: true,
+                smartypants: true,
+                xhtml: false
+            });
+            console.log('marked.js configurado correctamente');
+        }
 
         // ================= ESTADO GLOBAL =================
         let state = {
             articles: [],
             notifications: [],
+            privacyPolicy: null,
+            changes: null,
+            resources: null,
             readNotifications: JSON.parse(localStorage.getItem('nexus_read_notifications') || '[]'),
             favorites: JSON.parse(localStorage.getItem('nexus_favorites') || '[]'),
             activity: JSON.parse(localStorage.getItem('nexus_activity') || JSON.stringify({
@@ -2122,7 +2299,6 @@
             state.theme = defaultTheme;
             document.body.className = `theme-${defaultTheme}`;
             
-            // Configurar icono inicial del botón de tema
             const themeToggleBtn = document.getElementById('themeToggleBtn');
             if (themeToggleBtn) {
                 const iconName = defaultTheme === 'dark' ? 'moon-stars' : 'sun-high';
@@ -2140,10 +2316,8 @@
                 themeToggleBtn.classList.toggle('active', true);
             }
             
-            // Inicializar opciones de tema
             updateThemeOptions(defaultTheme);
             
-            // Escuchar cambios de preferencia del sistema
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
                 if (!localStorage.getItem('nexus_theme')) {
                     applyTheme(e.matches ? 'dark' : 'light');
@@ -2156,22 +2330,17 @@
             
             const body = document.body;
             const themeToggleBtn = document.getElementById('themeToggleBtn');
-            const previousTheme = state.theme;
             
-            // Añadir clase de animación
             if (themeToggleBtn) {
                 themeToggleBtn.classList.add('theme-switching');
             }
             
-            // Guardar preferencia
             state.theme = theme;
             localStorage.setItem('nexus_theme', theme);
             
-            // Aplicar tema al body con transición suave
             body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
             body.className = `theme-${theme}`;
             
-            // Actualizar icono del botón
             if (themeToggleBtn) {
                 const icons = {
                     dark: { 
@@ -2200,10 +2369,8 @@
                 }, 600);
             }
             
-            // Actualizar opciones de tema en configuración
             updateThemeOptions(theme);
             
-            // Forzar reflow para asegurar transición
             void body.offsetWidth;
             
             setTimeout(() => {
@@ -2242,7 +2409,6 @@
 
         // ================= NAVEGACIÓN =================
         function setupNavigation() {
-            // Navegación inferior
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const tabId = this.dataset.tab;
@@ -2250,13 +2416,11 @@
                 });
             });
             
-            // Botón de búsqueda en header
             document.getElementById('searchHeaderBtn').addEventListener('click', function() {
                 switchTab('searchTab');
                 document.getElementById('searchInput').focus();
             });
             
-            // Botón de tema en header
             document.getElementById('themeToggleBtn').addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -2272,7 +2436,6 @@
                 applyTheme(newTheme);
             });
             
-            // Opciones de tema en configuración
             document.querySelectorAll('.theme-option').forEach(option => {
                 option.addEventListener('click', function() {
                     applyTheme(this.dataset.theme);
@@ -2281,22 +2444,18 @@
         }
 
         function switchTab(tabId) {
-            // Ocultar todas las pestañas
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
             });
             
-            // Mostrar pestaña seleccionada
             document.getElementById(tabId).classList.add('active');
             
-            // Actualizar navegación activa
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.toggle('active', item.dataset.tab === tabId);
             });
             
             state.currentTab = tabId;
             
-            // Acciones específicas por pestaña
             if (tabId === 'favoritesTab') {
                 displayFavorites();
             } else if (tabId === 'searchTab') {
@@ -2311,7 +2470,6 @@
         // ================= CARGA DE DATOS =================
         async function loadInitialData() {
             try {
-                // Mostrar estado de carga para noticias
                 document.getElementById('newsContainer').innerHTML = `
                     <div class="loading-container">
                         <div class="loading-spinner"></div>
@@ -2319,7 +2477,6 @@
                     </div>
                 `;
                 
-                // Cargar noticias
                 console.log("Cargando datos desde:", CONFIG.newsJsonUrl);
                 const newsResponse = await fetch(CONFIG.newsJsonUrl);
                 
@@ -2329,7 +2486,6 @@
                 
                 const newsData = await newsResponse.json();
                 
-                // Verificar estructura
                 if (!newsData.articles || !Array.isArray(newsData.articles)) {
                     throw new Error('Formato de JSON incorrecto');
                 }
@@ -2337,23 +2493,22 @@
                 state.articles = newsData.articles;
                 console.log(`${state.articles.length} artículos cargados`);
                 
-                // Renderizar artículos
                 renderArticles();
                 
-                // Cargar notificaciones
                 await loadNotifications();
                 
-                // Guardar en caché
                 localStorage.setItem('nexus_cache', JSON.stringify({
                     articles: state.articles,
                     notifications: state.notifications,
+                    privacyPolicy: state.privacyPolicy,
+                    changes: state.changes,
+                    resources: state.resources,
                     timestamp: Date.now()
                 }));
                 
             } catch (error) {
                 console.error('Error cargando datos:', error);
                 
-                // Mostrar error amigable
                 document.getElementById('newsContainer').innerHTML = `
                     <div class="loading-container">
                         <i class="ti ti-alert-triangle" style="font-size: 3rem; margin-bottom: 20px; color: var(--danger);"></i>
@@ -2374,7 +2529,6 @@
                     </div>
                 `;
                 
-                // Intentar cargar desde caché
                 loadFromCache();
             }
         }
@@ -2386,7 +2540,6 @@
                     const notifData = await notifResponse.json();
                     state.notifications = notifData.notifications || [];
                     
-                    // Marcar notificaciones ya leídas
                     state.notifications.forEach(notification => {
                         notification.read = state.readNotifications.includes(notification.id);
                     });
@@ -2396,7 +2549,6 @@
             } catch (notifError) {
                 console.warn("No se pudieron cargar notificaciones:", notifError);
                 
-                // Intentar cargar desde caché
                 const cached = localStorage.getItem('nexus_cache');
                 if (cached) {
                     const data = JSON.parse(cached);
@@ -2411,6 +2563,600 @@
             }
         }
 
+        // ================= FUNCIÓN markAsRead (CORREGIDA) =================
+        function markAsRead(notificationId) {
+            const notification = state.notifications.find(n => n.id === notificationId);
+            
+            if (notification && !notification.read) {
+                notification.read = true;
+                
+                if (!state.readNotifications.includes(notificationId)) {
+                    state.readNotifications.push(notificationId);
+                    localStorage.setItem('nexus_read_notifications', JSON.stringify(state.readNotifications));
+                }
+                
+                state.unreadNotifications = state.notifications.filter(n => !n.read).length;
+                updateNotificationBadge();
+                
+                // Buscar el elemento específico usando data-notification-id
+                const notificationElement = document.querySelector(`[data-notification-id="${notificationId}"]`);
+                if (notificationElement) {
+                    // Remover clase unread
+                    notificationElement.classList.remove('unread');
+                    
+                    // Cambiar borde izquierdo a gris
+                    notificationElement.style.borderLeftColor = 'var(--border-color)';
+                    
+                    // Buscar y actualizar el texto "Toca para marcar como leída"
+                    const tapText = notificationElement.querySelector('div[style*="margin-top: 10px"]');
+                    if (tapText) {
+                        tapText.innerHTML = '<i class="ti ti-check"></i> Leída';
+                        tapText.style.color = 'var(--success)';
+                        tapText.style.opacity = '0.7';
+                    }
+                }
+                
+                showNotification('Notificación marcada como leída ✓', 'success');
+            } else if (notification && notification.read) {
+                showNotification('Esta notificación ya fue leída', 'info');
+            }
+        }
+
+        // ================= FUNCIÓN GENÉRICA PARA MOSTRAR CONTENIDO =================
+        function showContent(screenId, titleId, metaId, bodyId, contentData) {
+            console.log("showContent called for:", screenId, "with data:", contentData);
+            
+            // Actualizar título
+            document.getElementById(titleId).textContent = contentData.title || 'Contenido';
+            
+            // Actualizar metadatos según el tipo de contenido
+            let metaHTML = '';
+            
+            if (screenId === 'changesFullscreen') {
+                metaHTML = `
+                    <p><strong>Última actualización:</strong> ${contentData.lastUpdated || 'No disponible'}</p>
+                    ${contentData.version ? `<p><strong>Versión:</strong> ${contentData.version}</p>` : ''}
+                `;
+            } else if (screenId === 'resourcesFullscreen') {
+                metaHTML = `
+                    <p><strong>Última actualización:</strong> ${contentData.lastUpdated || 'No disponible'}</p>
+                    ${contentData.version ? `<p><strong>Versión:</strong> ${contentData.version}</p>` : ''}
+                `;
+            } else if (screenId === 'privacyFullscreen') {
+                metaHTML = `
+                    <p><strong>Última actualización:</strong> ${contentData.lastUpdated || 'No disponible'}</p>
+                    ${contentData.version ? `<p><strong>Versión:</strong> ${contentData.version}</p>` : ''}
+                    ${contentData.effectiveDate ? `<p><strong>Fecha de entrada en vigor:</strong> ${contentData.effectiveDate}</p>` : ''}
+                `;
+            }
+            
+            document.getElementById(metaId).innerHTML = metaHTML;
+            
+            // Generar el contenido según el tipo de JSON
+            let contentHTML = '';
+            
+            // PARA CHANGELOG.JSON
+            if (contentData.changelog && Array.isArray(contentData.changelog)) {
+                console.log("Detected changelog format");
+                contentHTML = generateChangelogHTML(contentData);
+            }
+            // PARA RECURSOS.JSON
+            else if (contentData.categories && Array.isArray(contentData.categories)) {
+                console.log("Detected resources format");
+                contentHTML = generateResourcesHTML(contentData);
+            }
+            // PARA PRIVACIDAD.JSON
+            else if (Array.isArray(contentData.content)) {
+                console.log("Detected privacy format");
+                const fullContent = contentData.content.join('\n\n');
+                contentHTML = marked.parse(fullContent);
+            } else if (contentData.content) {
+                contentHTML = marked.parse(contentData.content);
+            } else {
+                console.log("No content detected, showing default");
+                contentHTML = '<p style="color: var(--text-muted); font-style: italic; text-align: center; padding: 40px;">No hay contenido disponible para mostrar.</p>';
+            }
+            
+            document.getElementById(bodyId).innerHTML = contentHTML;
+            
+            // Mostrar la pantalla
+            document.getElementById(screenId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Scroll al inicio
+            const contentElement = document.querySelector(`.${screenId.replace('Fullscreen', '')}-content-full`);
+            if (contentElement) {
+                contentElement.scrollTop = 0;
+            }
+            
+            showNotification('Contenido cargado correctamente ✓', 'success');
+        }
+
+        // ================= FUNCIÓN ESPECÍFICA PARA CHANGELOG.JSON =================
+        function generateChangelogHTML(data) {
+            console.log("Generating changelog HTML from:", data);
+            let html = '';
+            
+            if (data.changelog && Array.isArray(data.changelog) && data.changelog.length > 0) {
+                // Ordenar por fecha (más reciente primero)
+                const sortedChangelog = [...data.changelog].sort((a, b) => {
+                    const dateA = parseDate(a.date);
+                    const dateB = parseDate(b.date);
+                    return dateB - dateA;
+                });
+                
+                sortedChangelog.forEach((entry, index) => {
+                    console.log("Processing changelog entry:", entry);
+                    html += `
+                        <div class="changelog-entry" style="
+                            margin-bottom: 30px;
+                            padding: 25px;
+                            background: var(--bg-secondary);
+                            border-radius: var(--radius-lg);
+                            border: 1px solid var(--border-color);
+                            transition: var(--transition-fast);
+                            ${index === 0 ? 'border-left: 4px solid var(--primary);' : ''}
+                        ">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                                <h3 style="margin: 0; color: var(--text-primary); font-size: 1.3rem; font-weight: 600;">
+                                    ${entry.title || `Versión ${entry.version}`}
+                                </h3>
+                                <div style="text-align: right;">
+                                    <span style="display: block; font-weight: 700; color: var(--primary); background: rgba(139, 92, 246, 0.15); padding: 6px 14px; border-radius: var(--radius-full); font-size: 0.9rem;">
+                                        v${entry.version}
+                                    </span>
+                                    <span style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">
+                                        <i class="ti ti-calendar" style="margin-right: 5px;"></i> ${entry.date}
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-left: 5px;">
+                    `;
+                    
+                    if (entry.changes && Array.isArray(entry.changes) && entry.changes.length > 0) {
+                        html += `<ul style="margin: 0; padding-left: 20px;">`;
+                        
+                        entry.changes.forEach(change => {
+                            if (typeof change === 'string' && change.trim() !== '') {
+                                const isBug = change.toLowerCase().includes('corregido') || 
+                                              change.toLowerCase().includes('bug') || 
+                                              change.toLowerCase().includes('error');
+                                const isNew = change.toLowerCase().includes('agregado') || 
+                                              change.toLowerCase().includes('nuevo') || 
+                                              change.toLowerCase().includes('añadido') ||
+                                              change.startsWith('✅');
+                                const isImprovement = change.toLowerCase().includes('mejorado') || 
+                                                      change.toLowerCase().includes('optimizado');
+                                
+                                let icon = '✅';
+                                let color = 'var(--success)';
+                                let bgColor = 'rgba(16, 185, 129, 0.1)';
+                                
+                                if (isBug) {
+                                    icon = '🐛';
+                                    color = 'var(--danger)';
+                                    bgColor = 'rgba(239, 68, 68, 0.1)';
+                                } else if (isNew) {
+                                    icon = '✨';
+                                    color = 'var(--primary)';
+                                    bgColor = 'rgba(139, 92, 246, 0.1)';
+                                } else if (isImprovement) {
+                                    icon = '⚡';
+                                    color = 'var(--warning)';
+                                    bgColor = 'rgba(245, 158, 11, 0.1)';
+                                }
+                                
+                                html += `
+                                    <li style="
+                                        margin-bottom: 12px; 
+                                        line-height: 1.6; 
+                                        display: flex; 
+                                        align-items: flex-start; 
+                                        gap: 12px;
+                                        padding: 10px 15px;
+                                        background: ${bgColor};
+                                        border-radius: var(--radius-md);
+                                        border-left: 3px solid ${color};
+                                    ">
+                                        <span style="color: ${color}; font-size: 1.2rem; flex-shrink: 0; margin-top: 2px;">${icon}</span>
+                                        <span style="flex: 1; color: var(--text-primary);">${change}</span>
+                                    </li>
+                                `;
+                            }
+                        });
+                        
+                        html += `</ul>`;
+                    } else {
+                        html += `
+                            <p style="color: var(--text-muted); font-style: italic; padding: 15px; background: var(--bg-card); border-radius: var(--radius-md);">
+                                No hay cambios registrados para esta versión.
+                            </p>
+                        `;
+                    }
+                    
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                html = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <i class="ti ti-notes-off" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 20px; opacity: 0.3;"></i>
+                        <h3 style="color: var(--text-primary); margin-bottom: 10px;">No hay cambios registrados</h3>
+                        <p style="color: var(--text-secondary); max-width: 400px; margin: 0 auto;">
+                            El historial de cambios está vacío o no se pudo cargar correctamente.
+                        </p>
+                    </div>
+                `;
+            }
+            
+            return html;
+        }
+
+        // ================= FUNCIÓN ESPECÍFICA PARA RECURSOS.JSON =================
+        function generateResourcesHTML(data) {
+            console.log("Generating resources HTML from:", data);
+            let html = '';
+            
+            if (data.categories && Array.isArray(data.categories) && data.categories.length > 0) {
+                data.categories.forEach((category, catIndex) => {
+                    console.log("Processing category:", category);
+                    html += `
+                        <div class="resources-category" style="
+                            margin-bottom: 30px;
+                            padding: 25px;
+                            background: var(--bg-secondary);
+                            border-radius: var(--radius-lg);
+                            border-left: 4px solid var(--primary);
+                        ">
+                            <h3 style="
+                                margin: 0 0 20px 0;
+                                color: var(--text-primary);
+                                font-size: 1.3rem;
+                                display: flex;
+                                align-items: center;
+                                gap: 12px;
+                                font-weight: 600;
+                            ">
+                                <i class="ti ti-category" style="color: var(--primary);"></i>
+                                ${category.name}
+                            </h3>
+                            
+                            <div class="resources-items" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
+                    `;
+                    
+                    if (category.items && Array.isArray(category.items) && category.items.length > 0) {
+                        category.items.forEach((item, itemIndex) => {
+                            console.log("Processing item:", item);
+                            html += `
+                                <div class="resource-item" style="
+                                    padding: 20px;
+                                    background: var(--bg-card);
+                                    border-radius: var(--radius-lg);
+                                    border: 1px solid var(--border-color);
+                                    transition: var(--transition-fast);
+                                    display: flex;
+                                    flex-direction: column;
+                                    height: 100%;
+                                "
+                                onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='var(--primary)'; this.style.boxShadow='var(--shadow-md)';"
+                                onmouseout="this.style.transform=''; this.style.borderColor=''; this.style.boxShadow='';">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                                        <h4 style="
+                                            margin: 0;
+                                            color: var(--text-primary);
+                                            font-size: 1.1rem;
+                                            font-weight: 600;
+                                            line-height: 1.4;
+                                        ">
+                                            ${item.name}
+                                        </h4>
+                                        <span style="
+                                            font-size: 0.75rem;
+                                            padding: 5px 12px;
+                                            background: rgba(139, 92, 246, 0.15);
+                                            color: var(--primary);
+                                            border-radius: var(--radius-full);
+                                            font-weight: 700;
+                                            white-space: nowrap;
+                                            margin-left: 10px;
+                                        ">
+                                            ${item.license || 'Sin licencia'}
+                                        </span>
+                                    </div>
+                                    
+                                    <p style="
+                                        margin: 0 0 15px 0;
+                                        color: var(--text-secondary);
+                                        font-size: 0.95rem;
+                                        line-height: 1.6;
+                                        flex-grow: 1;
+                                    ">
+                                        ${item.description}
+                                    </p>
+                                    
+                                    ${item.url && item.url !== '#' ? `
+                                        <div style="margin-top: auto;">
+                                            <a href="${item.url}" 
+                                               target="_blank" 
+                                               rel="noopener noreferrer"
+                                               style="
+                                                   color: var(--primary);
+                                                   text-decoration: none;
+                                                   font-size: 0.9rem;
+                                                   display: inline-flex;
+                                                   align-items: center;
+                                                   gap: 8px;
+                                                   font-weight: 600;
+                                                   padding: 8px 16px;
+                                                   background: rgba(139, 92, 246, 0.1);
+                                                   border-radius: var(--radius-full);
+                                                   transition: var(--transition-fast);
+                                                   width: fit-content;
+                                               "
+                                               onmouseover="this.style.background='rgba(139, 92, 246, 0.2)'; this.style.transform='translateX(4px)';"
+                                               onmouseout="this.style.background='rgba(139, 92, 246, 0.1)'; this.style.transform='';">
+                                                <i class="ti ti-external-link"></i>
+                                                Visitar sitio
+                                            </a>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `;
+                        });
+                    } else {
+                        html += `
+                            <div style="grid-column: 1 / -1; text-align: center; padding: 30px 20px;">
+                                <i class="ti ti-package-off" style="font-size: 2rem; color: var(--text-muted); margin-bottom: 15px; opacity: 0.3;"></i>
+                                <p style="color: var(--text-muted); font-style: italic;">
+                                    No hay recursos en esta categoría.
+                                </p>
+                            </div>
+                        `;
+                    }
+                    
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                html = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <i class="ti ti-tool-off" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 20px; opacity: 0.3;"></i>
+                        <h3 style="color: var(--text-primary); margin-bottom: 10px;">No hay recursos disponibles</h3>
+                        <p style="color: var(--text-secondary); max-width: 400px; margin: 0 auto;">
+                            La lista de recursos está vacía o no se pudo cargar correctamente.
+                        </p>
+                    </div>
+                `;
+            }
+            
+            return html;
+        }
+
+        // ================= FUNCIÓN AUXILIAR PARA FECHAS =================
+        function parseDate(dateString) {
+            if (!dateString) return new Date(0);
+            
+            // Formato DD/MM/YYYY
+            if (dateString.includes('/')) {
+                const parts = dateString.split('/');
+                if (parts.length === 3) {
+                    return new Date(parts[2], parts[1] - 1, parts[0]);
+                }
+            }
+            
+            // Formato YYYY-MM-DD
+            if (dateString.includes('-')) {
+                return new Date(dateString);
+            }
+            
+            // Intento por defecto
+            return new Date(dateString);
+        }
+
+        // ================= FUNCIONES DE CARGA ESPECÍFICAS CON DEBUG =================
+        async function loadChanges() {
+            try {
+                console.log("Loading changelog from:", CONFIG.changesJsonUrl);
+                
+                if (state.changes) {
+                    console.log("Using cached changelog:", state.changes);
+                    showContent('changesFullscreen', 'changesTitle', 'changesMeta', 'changesBody', state.changes);
+                    return;
+                }
+                
+                showNotification('Cargando historial de cambios...', 'info');
+                
+                const changesResponse = await fetch(CONFIG.changesJsonUrl);
+                console.log("Changelog response status:", changesResponse.status);
+                
+                if (changesResponse.ok) {
+                    const changesData = await changesResponse.json();
+                    console.log("Changelog data loaded:", changesData);
+                    state.changes = changesData;
+                    
+                    // Guardar en caché
+                    const cached = localStorage.getItem('nexus_cache');
+                    if (cached) {
+                        const data = JSON.parse(cached);
+                        data.changes = changesData;
+                        data.timestamp = Date.now();
+                        localStorage.setItem('nexus_cache', JSON.stringify(data));
+                    }
+                    
+                    showContent('changesFullscreen', 'changesTitle', 'changesMeta', 'changesBody', changesData);
+                } else {
+                    throw new Error(`Error HTTP: ${changesResponse.status} - ${changesResponse.statusText}`);
+                }
+            } catch (error) {
+                console.error('Error cargando historial de cambios:', error);
+                showNotification('Error al cargar el historial de cambios', 'error');
+                
+                // Mostrar contenido por defecto
+                showDefaultContent('changesFullscreen', 'changesTitle', 'changesMeta', 'changesBody', 
+                    'Historial de Cambios', 
+                    'No se pudo cargar el historial de cambios completo. Por favor, verifica tu conexión a internet.');
+            }
+        }
+
+        async function loadResources() {
+            try {
+                console.log("Loading resources from:", CONFIG.resourcesJsonUrl);
+                
+                if (state.resources) {
+                    console.log("Using cached resources:", state.resources);
+                    showContent('resourcesFullscreen', 'resourcesTitle', 'resourcesMeta', 'resourcesBody', state.resources);
+                    return;
+                }
+                
+                showNotification('Cargando recursos utilizados...', 'info');
+                
+                const resourcesResponse = await fetch(CONFIG.resourcesJsonUrl);
+                console.log("Resources response status:", resourcesResponse.status);
+                
+                if (resourcesResponse.ok) {
+                    const resourcesData = await resourcesResponse.json();
+                    console.log("Resources data loaded:", resourcesData);
+                    state.resources = resourcesData;
+                    
+                    // Guardar en caché
+                    const cached = localStorage.getItem('nexus_cache');
+                    if (cached) {
+                        const data = JSON.parse(cached);
+                        data.resources = resourcesData;
+                        data.timestamp = Date.now();
+                        localStorage.setItem('nexus_cache', JSON.stringify(data));
+                    }
+                    
+                    showContent('resourcesFullscreen', 'resourcesTitle', 'resourcesMeta', 'resourcesBody', resourcesData);
+                } else {
+                    throw new Error(`Error HTTP: ${resourcesResponse.status} - ${resourcesResponse.statusText}`);
+                }
+            } catch (error) {
+                console.error('Error cargando recursos:', error);
+                showNotification('Error al cargar los recursos utilizados', 'error');
+                
+                // Mostrar contenido por defecto
+                showDefaultContent('resourcesFullscreen', 'resourcesTitle', 'resourcesMeta', 'resourcesBody', 
+                    'Recursos Utilizados', 
+                    'No se pudo cargar la lista de recursos completos. Por favor, verifica tu conexión a internet.');
+            }
+        }
+
+        async function loadPrivacyPolicy() {
+            try {
+                console.log("Loading privacy policy from:", CONFIG.privacyJsonUrl);
+                
+                if (state.privacyPolicy) {
+                    console.log("Using cached privacy policy:", state.privacyPolicy);
+                    showContent('privacyFullscreen', 'privacyTitle', 'privacyMeta', 'privacyBody', state.privacyPolicy);
+                    return;
+                }
+                
+                showNotification('Cargando política de privacidad...', 'info');
+                
+                const privacyResponse = await fetch(CONFIG.privacyJsonUrl);
+                console.log("Privacy response status:", privacyResponse.status);
+                
+                if (privacyResponse.ok) {
+                    const privacyData = await privacyResponse.json();
+                    console.log("Privacy data loaded:", privacyData);
+                    state.privacyPolicy = privacyData;
+                    
+                    // Guardar en caché
+                    const cached = localStorage.getItem('nexus_cache');
+                    if (cached) {
+                        const data = JSON.parse(cached);
+                        data.privacyPolicy = privacyData;
+                        data.timestamp = Date.now();
+                        localStorage.setItem('nexus_cache', JSON.stringify(data));
+                    }
+                    
+                    showContent('privacyFullscreen', 'privacyTitle', 'privacyMeta', 'privacyBody', privacyData);
+                } else {
+                    throw new Error(`Error HTTP: ${privacyResponse.status} - ${privacyResponse.statusText}`);
+                }
+            } catch (error) {
+                console.error('Error cargando política de privacidad:', error);
+                showNotification('Error al cargar la política de privacidad', 'error');
+                
+                // Mostrar contenido por defecto
+                showDefaultContent('privacyFullscreen', 'privacyTitle', 'privacyMeta', 'privacyBody', 
+                    'Política de Privacidad', 
+                    'No se pudo cargar la política de privacidad completa. Por favor, verifica tu conexión a internet.');
+            }
+        }
+
+        // ================= FUNCIÓN PARA MOSTRAR CONTENIDO POR DEFECTO =================
+        function showDefaultContent(screenId, titleId, metaId, bodyId, title, message) {
+            document.getElementById(titleId).textContent = title;
+            document.getElementById(metaId).innerHTML = `
+                <p><strong>Estado:</strong> Contenido no disponible</p>
+            `;
+            
+            document.getElementById(bodyId).innerHTML = `
+                <div style="
+                    text-align: center;
+                    padding: 60px 20px;
+                    background: var(--bg-secondary);
+                    border-radius: var(--radius-lg);
+                    margin: 20px 0;
+                ">
+                    <i class="ti ti-cloud-off" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 20px; opacity: 0.5;"></i>
+                    <h2 style="color: var(--text-primary); margin-bottom: 15px;">${title}</h2>
+                    <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 25px; line-height: 1.6;">
+                        ${message}
+                    </p>
+                    <button onclick="window.location.reload()" style="
+                        padding: 12px 24px;
+                        background: var(--primary);
+                        color: white;
+                        border: none;
+                        border-radius: var(--radius-full);
+                        cursor: pointer;
+                        font-weight: 600;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        transition: var(--transition-fast);
+                    "
+                    onmouseover="this.style.background='var(--primary-dark)';"
+                    onmouseout="this.style.background='var(--primary)';">
+                        <i class="ti ti-refresh"></i>
+                        Recargar página
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById(screenId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            const contentElement = document.querySelector(`.${screenId.replace('Fullscreen', '')}-content-full`);
+            if (contentElement) {
+                contentElement.scrollTop = 0;
+            }
+        }
+
+        // ================= FUNCIONES PARA CERRAR PANTALLAS (EXISTENTES) =================
+        function closePrivacyPolicyFull() {
+            document.getElementById('privacyFullscreen').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeChanges() {
+            document.getElementById('changesFullscreen').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeResources() {
+            document.getElementById('resourcesFullscreen').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
         function loadFromCache() {
             try {
                 const cached = localStorage.getItem('nexus_cache');
@@ -2421,6 +3167,9 @@
                     if (now - data.timestamp < CONFIG.cacheDuration) {
                         state.articles = data.articles || [];
                         state.notifications = data.notifications || [];
+                        state.privacyPolicy = data.privacyPolicy || null;
+                        state.changes = data.changes || null;
+                        state.resources = data.resources || null;
                         
                         state.notifications.forEach(notification => {
                             notification.read = state.readNotifications.includes(notification.id);
@@ -2464,8 +3213,18 @@
                     excerptLength = excerptText.length;
                 }
                 
-                const shortExcerpt = excerptText.substring(0, 150);
-                const showEllipsis = excerptLength > 150;
+                let plainExcerpt = excerptText
+                    .replace(/\*\*(.*?)\*\*/g, '$1')
+                    .replace(/\*(.*?)\*/g, '$1')
+                    .replace(/`(.*?)`/g, '$1')
+                    .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+                    .replace(/^#+\s*/gm, '')
+                    .replace(/^- /gm, '')
+                    .replace(/\n/g, ' ')
+                    .trim();
+                
+                const shortExcerpt = plainExcerpt.substring(0, 150);
+                const showEllipsis = plainExcerpt.length > 150;
                 
                 const date = article.date || 'Fecha no disponible';
                 
@@ -2508,6 +3267,68 @@
             }).join('');
         }
 
+        // ================= NOTIFICACIONES =================
+        function renderNotifications() {
+            const container = document.getElementById('notificationsList');
+            
+            if (!state.notifications || !state.notifications.length) {
+                container.innerHTML = `
+                    <div class="loading-container">
+                        <i class="ti ti-bell-off" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"></i>
+                        <p>No hay notificaciones disponibles</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const notificationsToShow = state.notifications;
+            
+            state.unreadNotifications = notificationsToShow.filter(n => !n.read).length;
+            updateNotificationBadge();
+            
+            if (!notificationsToShow.length) {
+                container.innerHTML = `
+                    <div class="loading-container">
+                        <i class="ti ti-bell" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"></i>
+                        <p>Todas las notificaciones han sido leídas</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = notificationsToShow.map(notification => `
+                <div class="notification-item ${notification.read ? '' : 'unread'}" 
+                     onclick="markAsRead(${notification.id})"
+                     data-notification-id="${notification.id}">
+                    <div class="notification-header">
+                        <h4 class="notification-title">${notification.title}</h4>
+                        <span class="notification-date">${formatDate(notification.date)}</span>
+                    </div>
+                    <div class="notification-body">
+                        ${notification.message}
+                    </div>
+                    ${!notification.read ? 
+                        '<div style="margin-top: 10px; font-size: 0.8rem; color: var(--info);"><i class="ti ti-info-circle"></i> Toca para marcar como leída</div>' : 
+                        '<div style="margin-top: 10px; font-size: 0.8rem; color: var(--success); opacity: 0.7;"><i class="ti ti-check"></i> Leída</div>'}
+                </div>
+            `).join('');
+        }
+
+        function updateNotificationBadge() {
+            const badge = document.getElementById('notificationBadge');
+            const navBadge = document.getElementById('navBadge');
+            
+            if (state.unreadNotifications > 0) {
+                badge.textContent = state.unreadNotifications;
+                badge.style.display = 'flex';
+                navBadge.textContent = state.unreadNotifications;
+                navBadge.style.display = 'flex';
+            } else {
+                badge.style.display = 'none';
+                navBadge.style.display = 'none';
+            }
+        }
+
         // ================= FAVORITOS =================
         function toggleFavorite(articleId, event) {
             if (event) event.stopPropagation();
@@ -2532,7 +3353,6 @@
                 displayFavorites();
             }
             
-            // Si estamos viendo el artículo, actualizar botón
             if (state.currentArticle && state.currentArticle.id === articleId) {
                 const favBtn = document.getElementById('articleFavoriteBtn');
                 if (favBtn) {
@@ -2587,8 +3407,18 @@
                     excerptText = content;
                 }
                 
-                const shortExcerpt = excerptText.substring(0, 150);
-                const showEllipsis = excerptText.length > 150;
+                let plainExcerpt = excerptText
+                    .replace(/\*\*(.*?)\*\*/g, '$1')
+                    .replace(/\*(.*?)\*/g, '$1')
+                    .replace(/`(.*?)`/g, '$1')
+                    .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+                    .replace(/^#+\s*/gm, '')
+                    .replace(/^- /gm, '')
+                    .replace(/\n/g, ' ')
+                    .trim();
+                
+                const shortExcerpt = plainExcerpt.substring(0, 150);
+                const showEllipsis = plainExcerpt.length > 150;
                 
                 return `
                     <div class="article-card" data-id="${article.id}">
@@ -2637,21 +3467,15 @@
             
             const articleAlreadyViewed = state.activity.viewedArticles.includes(articleId);
             
-            // ========== CORRECCIÓN: SIEMPRE CONTAR CADA APERTURA ==========
             state.activity.postsViewed++;
             
-            // Solo añadir a la lista de artículos únicos si es la primera vez
             if (!articleAlreadyViewed) {
                 state.activity.viewedArticles.push(articleId);
             }
             
-            // Guardar en localStorage
             localStorage.setItem('nexus_activity', JSON.stringify(state.activity));
-            
-            // Actualizar estadísticas
             updateStats();
             
-            // Configurar contenido
             document.getElementById('articleTitle').textContent = article.title;
             
             const metaHTML = `
@@ -2674,22 +3498,22 @@
                 articleImage.style.display = 'none';
             }
             
-            // Configurar contenido del artículo
             const articleBody = document.getElementById('articleBody');
+            let contentHTML = '';
+            
             if (Array.isArray(article.content)) {
-                articleBody.innerHTML = article.content
-                    .filter(paragraph => paragraph && paragraph.trim())
-                    .map(paragraph => `<p>${paragraph}</p>`)
-                    .join('');
+                const fullContent = article.content.join('\n\n');
+                contentHTML = marked.parse(fullContent);
             } else if (article.content) {
-                articleBody.innerHTML = `<p>${article.content}</p>`;
+                contentHTML = marked.parse(article.content);
             } else if (article.excerpt) {
-                articleBody.innerHTML = `<p>${article.excerpt}</p>`;
+                contentHTML = marked.parse(article.excerpt);
             } else {
-                articleBody.innerHTML = '<p>No hay contenido disponible.</p>';
+                contentHTML = '<p>No hay contenido disponible.</p>';
             }
             
-            // Configurar botón de favorito
+            articleBody.innerHTML = contentHTML;
+            
             const favBtn = document.getElementById('articleFavoriteBtn');
             if (favBtn) {
                 favBtn.classList.toggle('favorited', state.favorites.includes(articleId));
@@ -2697,27 +3521,45 @@
                     'ti ti-heart-filled' : 'ti ti-heart';
             }
             
-            // Mostrar pantalla completa
             document.getElementById('articleFullscreen').classList.add('active');
             document.body.style.overflow = 'hidden';
-            
-            // Scroll al inicio
             document.querySelector('.article-content').scrollTop = 0;
         }
 
-        // ===== FUNCIÓN closeFullscreenArticle (CORREGIDA) =====
         function closeFullscreenArticle() {
             document.getElementById('articleFullscreen').classList.remove('active');
             document.body.style.overflow = '';
             state.currentArticle = null;
         }
 
-        // ================= COMPARTIR NOTICIAS (SIMPLIFICADO) =================
+        // ================= COMPARTIR NOTICIAS =================
         function shareArticle(platform) {
-            if (!state.currentArticle) return;
+            if (!state.currentArticle) {
+                showNotification('No hay artículo para compartir', 'error');
+                return;
+            }
             
             const article = state.currentArticle;
-            const text = encodeURIComponent(`📰 ${article.title}\n\n${article.content ? (Array.isArray(article.content) ? article.content[0] : article.content).substring(0, 100) : ''}...\n\nLee la noticia completa en Nexus Noticias`);
+            
+            let cleanContent = '';
+            if (Array.isArray(article.content)) {
+                cleanContent = article.content[0] || '';
+            } else if (article.content) {
+                cleanContent = article.content;
+            } else if (article.excerpt) {
+                cleanContent = article.excerpt;
+            }
+            
+            cleanContent = cleanContent
+                .replace(/\*\*(.*?)\*\*/g, '$1')
+                .replace(/\*(.*?)\*/g, '$1')
+                .replace(/`(.*?)`/g, '$1')
+                .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+                .replace(/^#+\s*/gm, '')
+                .replace(/\n/g, ' ')
+                .substring(0, 100);
+            
+            const text = encodeURIComponent(`📰 ${article.title}\n\n${cleanContent}...\n\nLee la noticia completa en AFC NEXUS`);
             const url = encodeURIComponent(window.location.href);
             
             let shareUrl = '';
@@ -2735,6 +3577,9 @@
                 case 'facebook':
                     shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`;
                     break;
+                default:
+                    showNotification('Plataforma no soportada', 'error');
+                    return;
             }
             
             if (shareUrl) {
@@ -2744,10 +3589,29 @@
         }
 
         async function copyArticleToClipboard() {
-            if (!state.currentArticle) return;
+            if (!state.currentArticle) {
+                showNotification('No hay artículo para copiar', 'error');
+                return;
+            }
             
             const article = state.currentArticle;
-            const text = `📰 ${article.title}\n\n${article.content ? (Array.isArray(article.content) ? article.content[0] : article.content).substring(0, 200) : ''}...\n\nLee la noticia completa en Nexus Noticias\n${window.location.href}`;
+            
+            let cleanContent = '';
+            if (Array.isArray(article.content)) {
+                cleanContent = article.content[0] || '';
+            } else if (article.content) {
+                cleanContent = article.content;
+            }
+            
+            cleanContent = cleanContent
+                .replace(/\*\*(.*?)\*\*/g, '$1')
+                .replace(/\*(.*?)\*/g, '$1')
+                .replace(/`(.*?)`/g, '$1')
+                .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+                .replace(/^#+\s*/gm, '')
+                .substring(0, 200);
+            
+            const text = `📰 ${article.title}\n\n${cleanContent}...\n\nLee la noticia completa en AFC NEXUS\n${window.location.href}`;
             
             try {
                 await navigator.clipboard.writeText(text);
@@ -2779,31 +3643,33 @@
             
             let results = state.articles;
             
-            // Filtrar por búsqueda
             if (query) {
                 results = results.filter(article => {
-                    // Buscar en título
                     if (article.title && article.title.toLowerCase().includes(query)) {
                         return true;
                     }
                     
-                    // Buscar en contenido
                     if (article.content) {
+                        let cleanContent = '';
                         if (Array.isArray(article.content)) {
-                            return article.content.some(paragraph => 
-                                paragraph && paragraph.toLowerCase().includes(query)
-                            );
+                            cleanContent = article.content.join(' ');
                         } else {
-                            return article.content.toLowerCase().includes(query);
+                            cleanContent = article.content;
+                        }
+                        
+                        cleanContent = cleanContent
+                            .replace(/\*\*(.*?)\*\*/g, '$1')
+                            .replace(/\*(.*?)\*/g, '$1')
+                            .replace(/`(.*?)`/g, '$1')
+                            .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+                            .replace(/^#+\s*/gm, '')
+                            .toLowerCase();
+                        
+                        if (cleanContent.includes(query)) {
+                            return true;
                         }
                     }
                     
-                    // Buscar en excerpt
-                    if (article.excerpt && article.excerpt.toLowerCase().includes(query)) {
-                        return true;
-                    }
-                    
-                    // Buscar en categoría
                     if (article.category && article.category.toLowerCase().includes(query)) {
                         return true;
                     }
@@ -2812,10 +3678,7 @@
                 });
             }
             
-            // Ordenar resultados
             results = sortSearchResults(results, state.searchSort);
-            
-            // Mostrar resultados
             displaySearchResults(results);
             updateSearchStats(results.length);
         }
@@ -2830,7 +3693,6 @@
                     return sorted.sort((a, b) => new Date(a.date || 0) - new Date(b.date || 0));
                 case 'relevance':
                 default:
-                    // Mantener orden original para relevancia
                     return sorted;
             }
         }
@@ -2867,8 +3729,18 @@
                             excerptText = content;
                         }
                         
-                        const shortExcerpt = excerptText.substring(0, 120);
-                        const showEllipsis = excerptText.length > 120;
+                        let plainExcerpt = excerptText
+                            .replace(/\*\*(.*?)\*\*/g, '$1')
+                            .replace(/\*(.*?)\*/g, '$1')
+                            .replace(/`(.*?)`/g, '$1')
+                            .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+                            .replace(/^#+\s*/gm, '')
+                            .replace(/^- /gm, '')
+                            .replace(/\n/g, ' ')
+                            .trim();
+                        
+                        const shortExcerpt = plainExcerpt.substring(0, 120);
+                        const showEllipsis = plainExcerpt.length > 120;
                         
                         return `
                             <div class="article-card" data-id="${article.id}">
@@ -2924,86 +3796,6 @@
             }
         }
 
-        // ================= NOTIFICACIONES =================
-        function renderNotifications() {
-            const container = document.getElementById('notificationsList');
-            
-            if (!state.notifications || !state.notifications.length) {
-                container.innerHTML = `
-                    <div class="loading-container">
-                        <i class="ti ti-bell-off" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"></i>
-                        <p>No hay notificaciones disponibles</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            const notificationsToShow = state.notifications;
-            
-            state.unreadNotifications = notificationsToShow.filter(n => !n.read).length;
-            updateNotificationBadge();
-            
-            if (!notificationsToShow.length) {
-                container.innerHTML = `
-                    <div class="loading-container">
-                        <i class="ti ti-bell" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"></i>
-                        <p>Todas las notificaciones han sido leídas</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            container.innerHTML = notificationsToShow.map(notification => `
-                <div class="notification-item ${notification.read ? '' : 'unread'}" 
-                     onclick="markAsRead(${notification.id})">
-                    <div class="notification-header">
-                        <h4 class="notification-title">${notification.title}</h4>
-                        <span class="notification-date">${formatDate(notification.date)}</span>
-                    </div>
-                    <div class="notification-body">
-                        ${notification.message}
-                    </div>
-                    ${!notification.read ? '<div style="margin-top: 10px; font-size: 0.8rem; color: var(--info);"><i class="ti ti-info-circle"></i> Toca para marcar como leída</div>' : ''}
-                </div>
-            `).join('');
-        }
-
-        function markAsRead(notificationId) {
-            const notification = state.notifications.find(n => n.id === notificationId);
-            if (notification && !notification.read) {
-                notification.read = true;
-                
-                if (!state.readNotifications.includes(notificationId)) {
-                    state.readNotifications.push(notificationId);
-                    localStorage.setItem('nexus_read_notifications', JSON.stringify(state.readNotifications));
-                }
-                
-                state.unreadNotifications = Math.max(0, state.unreadNotifications - 1);
-                updateNotificationBadge();
-                
-                const notificationElement = document.querySelector(`.notification-item[onclick*="${notificationId}"]`);
-                if (notificationElement) {
-                    notificationElement.classList.remove('unread');
-                    notificationElement.style.opacity = '0.7';
-                }
-            }
-        }
-
-        function updateNotificationBadge() {
-            const badge = document.getElementById('notificationBadge');
-            const navBadge = document.getElementById('navBadge');
-            
-            if (state.unreadNotifications > 0) {
-                badge.textContent = state.unreadNotifications;
-                badge.style.display = 'flex';
-                navBadge.textContent = state.unreadNotifications;
-                navBadge.style.display = 'flex';
-            } else {
-                badge.style.display = 'none';
-                navBadge.style.display = 'none';
-            }
-        }
-
         // ================= ESTADÍSTICAS =================
         function updateStats() {
             document.getElementById('statPostsViewed').textContent = state.activity.postsViewed;
@@ -3036,7 +3828,6 @@
             const repeatRate = uniqueViews > 0 ? 
                 Math.round((repeatedViews / uniqueViews) * 100) : 0;
             
-            // Configurar grid de estadísticas
             const statsGrid = document.getElementById('detailedStatsGrid');
             statsGrid.innerHTML = `
                 <div class="stats-card-large">
@@ -3080,7 +3871,6 @@
                 </div>
             `;
             
-            // Configurar gráfico de progreso
             const chartContainer = document.getElementById('readingProgressChart');
             chartContainer.innerHTML = `
                 <div style="margin-bottom: 25px;">
@@ -3131,27 +3921,12 @@
                 </div>
             `;
             
-            // Mostrar pantalla completa
             document.getElementById('statsFullscreen').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closeDetailedStats() {
             document.getElementById('statsFullscreen').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // ================= POLÍTICA DE PRIVACIDAD =================
-        function openPrivacyPolicyFull() {
-            document.getElementById('privacyFullscreen').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            
-            // Scroll al inicio
-            document.querySelector('.privacy-content-full').scrollTop = 0;
-        }
-
-        function closePrivacyPolicyFull() {
-            document.getElementById('privacyFullscreen').classList.remove('active');
             document.body.style.overflow = '';
         }
 
@@ -3172,6 +3947,9 @@
                 };
                 state.theme = 'dark';
                 state.readNotifications = [];
+                state.privacyPolicy = null;
+                state.changes = null;
+                state.resources = null;
                 
                 applyTheme('dark');
                 loadInitialData();
@@ -3184,14 +3962,18 @@
 
         // ================= EVENT LISTENERS =================
         function setupEventListeners() {
-            // Configurar buscador
             setupSearch();
             
-            // Cerrar con Escape
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     if (document.getElementById('privacyFullscreen').classList.contains('active')) {
                         closePrivacyPolicyFull();
+                    }
+                    if (document.getElementById('changesFullscreen').classList.contains('active')) {
+                        closeChanges();
+                    }
+                    if (document.getElementById('resourcesFullscreen').classList.contains('active')) {
+                        closeResources();
                     }
                     if (document.getElementById('articleFullscreen').classList.contains('active')) {
                         closeFullscreenArticle();
@@ -3267,18 +4049,27 @@
                 setTimeout(() => notification.remove(), 300);
             }, 3000);
         }
+
+        // ================= FUNCIÓN PARA DEPURACIÓN =================
+        function debugJSONLoading() {
+            console.log("=== DEBUG JSON Loading ===");
+            console.log("state.changes:", state.changes);
+            console.log("state.resources:", state.resources);
+            console.log("state.privacyPolicy:", state.privacyPolicy);
+            console.log("CONFIG.changesJsonUrl:", CONFIG.changesJsonUrl);
+            console.log("CONFIG.resourcesJsonUrl:", CONFIG.resourcesJsonUrl);
+            console.log("CONFIG.privacyJsonUrl:", CONFIG.privacyJsonUrl);
+        }
     </script>
        
     <script>
         (function() {
-            // Activar Eruda solo si la URL contiene el código secreto
             var debeCargarEruda = window.location.search.includes('debug=true') || 
                                   window.location.hash === '#debug';
             
             if (debeCargarEruda) {
-                console.log('🔧 Activando herramientas de depuración Eruda...');
+                console.log('Activando herramientas de depuración Eruda...');
                 
-                // Crear y cargar el script de Eruda
                 var script = document.createElement('script');
                 script.src = "https://cdn.jsdelivr.net/npm/eruda";
                 script.crossOrigin = "anonymous";
@@ -3289,7 +4080,6 @@
                 };
                 
                 script.onerror = function () {
-                    // Si falla el primer CDN, intentar con uno de respaldo
                     console.log('Primer CDN falló, intentando con respaldo...');
                     var scriptBackup = document.createElement('script');
                     scriptBackup.src = "https://unpkg.com/eruda";
