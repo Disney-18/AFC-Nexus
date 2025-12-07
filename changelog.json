@@ -1,35 +1,38 @@
 {
-  "title": "Lista de Cambios",
-  "version": "1.0.0",
-  "lastUpdated": "01 de Diciembre, 2025",
+  "title": "Historial de Cambios",
+  "version": "1.0.1",
+  "lastUpdated": "02 de Diciembre, 2025",
   "changelog": [
+    {
+      "version": "1.0.1",
+      "date": "02/12/2025",
+      "title": "Mejoras y Optimizaciones",
+      "changes": [
+        "Corrección: Sistema de notificaciones completamente funcional con marcado de leídas",
+        "Nuevo: Sección de Historial de Cambios con interfaz profesional",
+        "Nuevo: Sección de Recursos Utilizados con detalles técnicos",
+        "Optimización: Rendimiento de carga optimizado con caché inteligente",
+        "Optimización: Sistema de caché mejorado para mejor experiencia offline",
+        "Mejora: Interfaz de usuario refinada con mejores transiciones"
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "01/12/2025",
       "title": "Lanzamiento Inicial",
       "changes": [
-        "✅ Aplicación completamente funcional",
-        "✅ Sistema de noticias desde JSON",
-        "✅ Sistema de notificaciones",
-        "✅ Política de privacidad dinámica",
-        "✅ Buscador profesional",
-        "✅ Sistema de favoritos",
-        "✅ Estadísticas detalladas",
-        "✅ Tema claro/oscuro",
-        "✅ Compartir noticias",
-        "✅ Interfaz responsive"
-      ]
-    },
-    {
-      "version": "1.0.1",
-      "date": "02/12/2025",
-      "title": "Mejoras y Correcciones",
-      "changes": [
-        "✅ Corregido sistema de notificaciones",
-        "✅ Agregada lista de cambios",
-        "✅ Agregada sección de recursos",
-        "✅ Mejorado rendimiento de carga",
-        "✅ Optimizado sistema de caché"
+        "Funcionalidad: Sistema completo de noticias con carga dinámica desde JSON",
+        "Funcionalidad: Sistema de notificaciones en tiempo real",
+        "Funcionalidad: Política de privacidad dinámica y actualizable",
+        "Funcionalidad: Buscador profesional con filtros y ordenamiento",
+        "Funcionalidad: Sistema de favoritos con almacenamiento local",
+        "Funcionalidad: Estadísticas detalladas de uso y progreso",
+        "Funcionalidad: Sistema de temas claro/oscuro con persistencia",
+        "Funcionalidad: Compartición de noticias en redes sociales",
+        "Funcionalidad: Interfaz responsive para todos los dispositivos",
+        "Funcionalidad: Lectura completa de artículos con soporte Markdown",
+        "Seguridad: Protección de datos con almacenamiento local seguro",
+        "Seguridad: Carga segura de contenido externo mediante CORS proxy"
       ]
     }
   ]
