@@ -1,20 +1,20 @@
 {
   "title": "Recursos Utilizados",
   "version": "1.0",
-  "lastUpdated": "01 de Diciembre, 2025",
+  "lastUpdated": "02 de Diciembre, 2025",
   "categories": [
     {
-      "name": "Iconos",
+      "name": "Iconos y Tipografía",
       "items": [
         {
           "name": "Tabler Icons",
-          "description": "Iconos modernos y elegantes",
+          "description": "Biblioteca de iconos moderna y elegante utilizada en toda la interfaz",
           "url": "https://tabler-icons.io/",
-          "license": "MIT"
+          "license": "MIT License"
         },
         {
           "name": "Font Awesome",
-          "description": "Iconos para redes sociales",
+          "description": "Iconos para redes sociales y elementos de interfaz adicionales",
           "url": "https://fontawesome.com/",
           "license": "Font Awesome Free License"
         }
@@ -25,48 +25,77 @@
       "items": [
         {
           "name": "marked.js",
-          "description": "Procesador de Markdown",
+          "description": "Procesador de Markdown para renderizado de contenido de noticias",
           "url": "https://marked.js.org/",
-          "license": "MIT"
+          "license": "MIT License"
         }
       ]
     },
     {
-      "name": "Imágenes",
-      "items": [
-        {
-          "name": "Unsplash",
-          "description": "Imagen por defecto para noticias",
-          "url": "https://unsplash.com/",
-          "license": "Unsplash License"
-        }
-      ]
-    },
-    {
-      "name": "Servicios",
+      "name": "Servicios y APIs",
       "items": [
         {
           "name": "CORS Proxy",
-          "description": "Proxy para evitar problemas CORS",
+          "description": "Servicio proxy para evitar problemas de CORS al cargar contenido externo",
           "url": "https://corsproxy.io/",
-          "license": "Pública"
+          "license": "Servicio Público"
         },
         {
           "name": "GitHub",
-          "description": "Hosting de archivos JSON",
+          "description": "Plataforma de hosting para archivos JSON y control de versiones",
           "url": "https://github.com/",
-          "license": "GPL"
+          "license": "Términos de Servicio"
         }
       ]
     },
     {
-      "name": "Desarrollo",
+      "name": "Imágenes y Contenido",
       "items": [
         {
-          "name": "HTML5 / CSS3 / JavaScript",
-          "description": "Tecnologías base de la aplicación",
-          "url": "#",
-          "license": "Estándares Web"
+          "name": "Unsplash",
+          "description": "Imágenes de stock de alta calidad para noticias sin imagen",
+          "url": "https://unsplash.com/",
+          "license": "Unsplash License"
+        },
+        {
+          "name": "The Hacker News",
+          "description": "Fuente principal de contenido para noticias de ciberseguridad",
+          "url": "https://thehackernews.com/",
+          "license": "Contenido Editorial"
+        }
+      ]
+    },
+    {
+      "name": "Infraestructura y Hosting",
+      "items": [
+        {
+          "name": "GitHub Pages",
+          "description": "Hosting gratuito para aplicaciones web estáticas",
+          "url": "https://pages.github.com/",
+          "license": "Servicio Gratuito"
+        }
+      ]
+    },
+    {
+      "name": "Tecnologías Base",
+      "items": [
+        {
+          "name": "HTML5",
+          "description": "Lenguaje de marcado para estructura web",
+          "url": "https://developer.mozilla.org/es/docs/Web/HTML",
+          "license": "Estándar Web"
+        },
+        {
+          "name": "CSS3",
+          "description": "Lenguaje de estilos para diseño y presentación",
+          "url": "https://developer.mozilla.org/es/docs/Web/CSS",
+          "license": "Estándar Web"
+        },
+        {
+          "name": "JavaScript (ES6+)",
+          "description": "Lenguaje de programación para interactividad",
+          "url": "https://developer.mozilla.org/es/docs/Web/JavaScript",
+          "license": "Estándar ECMAScript"
         }
       ]
     }
